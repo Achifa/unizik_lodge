@@ -42,7 +42,7 @@ const Space = () => {
                 <div className="agent-space-amenities">
 
                     
-
+                    <h6>Resources</h6>
                     <ul>
                         {
                             Items.map(item => 
@@ -58,7 +58,7 @@ const Space = () => {
                     </ul>
 
 
-                    
+                    <h6>Availble resources</h6>
                     <ul>
                         
                         {
