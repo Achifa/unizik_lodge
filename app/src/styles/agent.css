@@ -1,0 +1,296 @@
+@media screen and (max-width: 400px) {
+    
+
+
+    .agent-header{
+        height: 70px;
+        width: 100%;
+        background: linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% );
+    }
+
+    .agent-header ul{
+        list-style-type: none;
+        display: flex;
+        height: 100%;
+        float: right;
+        align-items: center;
+    }
+
+    .agent-header ul li{
+        margin: 0 20px 0 10px;
+    }
+
+    .agent-home{
+        height: calc(100vh - 70px);
+        width: 100%;
+        overflow: auto;
+        padding: 0 0 70px 0;
+        
+    }
+
+    .agent-card{
+        height: 300px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .agent-lodge-details{
+        height: 40%;
+        width: 100%;
+    }
+
+    .agent-lodge-data1, .agent-lodge-data2, .agent-lodge-data3{
+        height: 33.3%;
+        padding: 10px 10px 10px 10px;
+        width: 100%;
+    }
+
+    .agent-lodge-name{
+        float: left;
+        width: 50%;
+        font-weight: 500;
+    }
+
+    .agent-lodge-price{
+        width: 50%;
+        float: right;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .agent-lodge-location{
+        float: left;
+        padding: 0;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+
+    .agent-lodge-save{
+        float: right;
+        height: 100%;
+        width: 30%;
+        text-align: right;
+        color: #fff;
+        border: none;
+        padding-right: 5px;
+        color: #000;
+        font-size: medium;
+        outline: none;
+    }
+
+    .agent-lodge-preview{
+        float: right;
+        height: 100%;
+        width: 50%;
+        margin-top: -10px;
+        border-radius: 5px;
+        color: #fff;
+        border: none;
+        outline: none;
+    }
+
+    .agent-price-range{
+        padding: 10px;
+    }
+
+    .input-cnt{
+        margin: 20px 0 20px 0;
+    }
+
+    .agent-lodge-filter-overlay{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        overflow: auto;
+        z-index: 1000;
+        height: calc(100vh - 125px); 
+        width: 100vw;
+        background-color: rgb(0, 0, 0, .5);
+        padding: 15px;
+    }
+
+    .agent-lodge-filter{
+        background-color: #fff;
+        min-height: 550px;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .agent-profile{
+        height: calc(100vh - 70px);
+        width: 100%;
+        overflow: auto;
+        padding: 0 0 70px 0;
+    }
+
+    .agent-profile-list{
+        padding: 10px;
+    }
+
+    .agent-profile-list .card{
+        height: 80px;
+    }
+
+    .agent-profile-exit{
+        height: 60px;
+        width: 95%;
+        border-radius: 5px;
+        margin: 0 2.5% 0 2.5%;
+        position: absolute;
+        bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background-color: blue;
+    }
+
+    .agent-lodge{
+        height: calc(100vh - 70px);
+        width: 100%;
+        overflow: auto;
+        padding: 10px;
+    }
+
+    .agent-lodge-body{
+        height: fit-content;
+        width: 100%;
+        padding: 15px 15px 70px 15px;
+        margin: 20px 0 0 0;
+    }
+
+    .agent-availble-amnities{
+        height: fit-content;
+        width: 100%;
+    }
+
+    .agent-availble-amnities ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 5px;
+        list-style-type: none;
+    }
+
+    .agent-availble-amnities ul li{
+        padding: 10px;
+        border-radius: 5px;
+        color: #fff;
+        background-color: blue;
+        margin: 5px;
+    }
+
+    .agent-unavailble-amnities{
+        height: fit-content;
+        width: 100%;
+    }
+
+    .agent-unavailble-amnities ul{
+        display: flex;
+        padding: 5px;
+        flex-direction: row;
+        list-style-type: none;
+        flex-wrap: wrap;
+    }
+
+    .agent-unavailble-amnities ul li{
+        margin: 5px;
+        border-radius: 5px;
+        padding: 10px;
+        color: #fff;
+        background-color: blue;
+    }
+
+    .agent-lodge-status{
+        height: fit-content;
+        width: 100%;
+    }
+
+    .agent-client-dp{
+        height: 50px;
+        width: 100%;
+        position: relative;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .agent-client-title{
+        height: 50px;
+        width: 100%;
+        margin: 10px 0 10px 0;
+        font-size: large;
+        font-weight: 500;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        padding: 0 10px 0 10px;
+    }
+
+    .agent-client-budget{
+        height: 30px;
+        width: 100%;
+        margin: 10px 0 0 0;
+        font-size: small;
+        font-weight: bold;
+        padding: 0 10px 0 10px;
+    }
+
+    .agent-client-description{
+        height: 55px;
+        width: 100%;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+        margin: 10px 0 10px 0;
+        font-size: small;
+        padding: 0 10px 0 10px;
+    }
+
+    .agent-client-amenities{
+        height: 50px;
+        width: 95%;
+        margin: auto;
+        font-size: small;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 1px 0 1px;
+    }
+
+    .agent-client-amenities::-webkit-scrollbar{
+        display: none;
+    }
+
+
+
+    .agent-client-amenities ul{
+        list-style-type: none;
+        width: fit-content;
+        white-space: nowrap;
+        overflow: auto;
+        padding: 2.5px;
+        display: flex;
+    }
+
+    .agent-client-amenities ul li{
+        float: left;
+        padding: 10px;
+        color: #fff;
+        font-weight: bold;
+        background: linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% );
+        position: relative;
+        margin: 0 10px 0 10px;
+        border-radius: 2.5px;
+    }
+
+}
