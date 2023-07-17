@@ -295,7 +295,7 @@
 
 
     .agent-space-body{
-        height: 100vh;
+        height: calc(100vh - 150px);
         width: 100%;
         padding: 10px;
         overflow: auto;
@@ -303,9 +303,10 @@
     }
 
     textarea{
-        height: 80px;
+        height: 50px;
         width: 100%;
         padding: 10px;
+        overflow: auto;
         font-size: larger;
         font-weight: 500;
         border: 1px solid #000;
@@ -314,15 +315,18 @@
     }
 
     .agent-space-desc{
-        height: 200px;
+        min-height: 550px;
         width: 100%;
         position: relative;
+        margin: 20px 0 20px 0;
     }
 
 
     .agent-space-amenities{
         height: fit-content;
         width: 100%;
+        position: relative;
+        
     }
 
     .agent-space-amenities ul{
@@ -348,20 +352,101 @@
         border-radius: 20px;
     }
 
-    .agent-space-submit-btn{
-        height: 150px;
+    
+
+    .agent-space-price{
+        height: 80px;
         width: 100%;
-        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: row;
     }
 
-    button{
+    .agent-space-price label{
+        float: left;
+        width: 40%;
+        font-weight: 500;
+        font-size: small;
+    }
+
+    .agent-space-price input{
+        float: right;
+        width: 50%;
+        height: 40px;
+        padding: 5px;
+    }
+
+
+    .agent-space-location{
         height: 80px;
-        width: 80%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .agent-space-location label{
+        float: left;
+        width: 40%;
+        font-weight: 500;
+        font-size: small;
+    }
+
+    .agent-space-location input{
+        float: right;
+        width: 50%;
+        height: 40px;
+        padding: 5px;
+    }
+
+    .agent-space-submit-btn{
+        height: 70px;
+        width: 100%;
+       
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 5px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: azure;
+    }
+
+    .agent-space-submit-btn button{
+        height: 50px;
+        width: 99%;
+        margin: 0;
         position: relative;
         outline: none;
         border: none;
+        border-radius: 5px;
+    }
+
+    .agent-space-view-btn label{
+        height: 50px;
+        width: 99%;
+        margin: 0;
+        position: relative;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% );
+        color: #fff;
+        font-weight: 500;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .agent-space-view-carousel{
+        height: 150px;
+        width: 100%;
+        border: 1px dashed #000;
+        margin-bottom: 10px;
     }
 }
