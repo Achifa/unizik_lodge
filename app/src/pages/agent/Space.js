@@ -123,6 +123,20 @@ const Space = () => {
                         <input type="text" id='location2' />
                     </div>
 
+                    <div className="agent-space-location" style={{display: 'block'}}>
+
+                        <div style={{width: '40%',  padding: '10px', background: 'transparent', margin: '0 5px 0 5px', whiteSpace: 'nowrap',  float: 'left'}}>
+                            <label htmlFor="north" style={{float: 'left',  fontWeight: 'bold'}}>Up School</label>
+                            <input name='coordinate' type="radio" id='north' style={{height: '25px', width: '35px', float: 'right'}} />
+
+                        </div>
+                        <div style={{width: '40%',  padding: '10px', background: 'transparent', margin: '0 5px 0 5px', whiteSpace: 'nowrap',  float: 'right'}}>
+                            <label htmlFor="south" style={{float: 'left',  fontWeight: 'bold'}}>Down School</label>
+                            <input name='coordinate' type="radio" id='south' style={{height: '25px', width: '35px', float: 'right'}} />
+
+                        </div>
+                    </div>
+
                     <h6>Upload Lodge Photos/Videos</h6>
 
                     <div className="agent-space-view-carousel">
@@ -153,7 +167,7 @@ const Space = () => {
                 <div className="agent-space-amenities">
 
                     
-                    <h6>Resources</h6>
+                    <h6>Facilities</h6>
                     <ul>
                         {
                             Items.map((item, index) => 
@@ -169,7 +183,7 @@ const Space = () => {
                     </ul>
 
 
-                    <h6>Availble resources</h6>
+                    <h6>Availble Facilities</h6>
                     <ul>
                         
                         {
