@@ -173,7 +173,7 @@ const Space = () => {
 
                 </div>
 
-                    <hr />
+                    
 
 
                 <div className="agent-space-amenities">
