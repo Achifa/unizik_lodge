@@ -156,7 +156,7 @@ const Space = () => {
 
                     </div>
 
-                    <div className="agent-space-view-btn">
+                    <div className="agent-space-view-btn" style={{height: '65px', width: '100%'}}>
 
                         <input type="file" style={{display: 'none'}} onChange={handleImg} name="img" id="img" accept='image/*' />
 
