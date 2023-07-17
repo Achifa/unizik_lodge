@@ -123,6 +123,8 @@ const Space = () => {
                         <input type="text" id='location2' />
                     </div>
 
+                    <hr />
+
                     <div className="agent-space-location" style={{display: 'block'}}>
 
                         <div style={{width: '40%',  padding: '10px', background: 'transparent', margin: '0 5px 0 5px', whiteSpace: 'nowrap',  float: 'left'}}>
