@@ -98,14 +98,18 @@ const Space = () => {
         <>
             <div className="agent-space-body">
 
+                <h6>Lodge Name</h6>
+                <hr />
+
                 <textarea name="" id="" placeholder='Enter Lodge Name Here...'></textarea>
 
-                <hr />
+                
 
 
                 <div className="agent-space-desc">
 
                     <h6>Set Lodge Price</h6>
+                    <hr />
 
 
                     <div className="agent-space-price">
@@ -113,17 +117,18 @@ const Space = () => {
                         <input type="text" id='price' />
                     </div>
                     
-                    <hr />
+                    
 
                     <h6>Set Lodge Location</h6>
+                    <hr />
                    
                     <div className="agent-space-location">
-                        <label htmlFor="location1">Address 1 (Village name)</label>
+                        <label htmlFor="location1">Address 1 <br />(Village name)</label>
                         <input type="number" id='location1' />
                     </div>
 
                     <div className="agent-space-location">
-                        <label htmlFor="location2">Address 2 (Street/Junction)</label>
+                        <label htmlFor="location2">Address 2 <br />(Street/Junction)</label>
                         <input type="text" id='location2' />
                     </div>
 
