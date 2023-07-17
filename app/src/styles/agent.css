@@ -444,9 +444,19 @@
     }
 
     .agent-space-view-carousel{
-        height: 150px;
+        min-height: 100px;
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
         border: 1px dashed #000;
         margin-bottom: 10px;
+    }
+
+    .agent-space-view-photo-frame,.agent-space-view-video-frame{
+        height: 100px;
+        width: 32%;
+        margin: 2px;
+        border: 1px dashed #000;
+
     }
 }

@@ -39,7 +39,23 @@ const Space = () => {
         reader.addEventListener('load', result => {
             //console.log(reader.result)
             let url = reader.result;
-            setImgs(item => [...item, url])
+            setImgs(item => [...item, url]);
+
+            let frame = document.createElement('div');
+            frame.className = 'agent-space-view-photo-frame'
+
+            let img = document.createElement('img');
+            img.style.height = '100%'
+            img.style.width = '100%'
+            img.src = url
+
+            frame.appendChild(img);
+
+            let cnt = document.querySelector('.agent-space-view-carousel');
+            
+
+            cnt.append(frame)
+
         })
 
         reader.readAsDataURL(file) 
@@ -55,6 +71,22 @@ const Space = () => {
             //console.log(reader.result)
             let url = reader.result;
             setVids(item => [...item, url])
+
+            let frame = document.createElement('div');
+            frame.className = 'agent-space-view-video-frame'
+
+            let video = document.createElement('video');
+            video.style.height = '100%'
+            video.style.width = '100%'
+            video.src = url
+            video.autoplay = true;
+
+            frame.appendChild(video);
+
+            let cnt = document.querySelector('.agent-space-view-carousel');
+            
+
+            cnt.append(frame)
         })
 
         reader.readAsDataURL(file) 
@@ -95,47 +127,7 @@ const Space = () => {
 
                     <div className="agent-space-view-carousel">
 
-                        <div style={{display: 'none'}}  id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-
-                            <div className="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-
-                            <div className="carousel-inner">
-
-                                
-
-                                {/*
-                                
-                                <div className="carousel-item active" data-bs-interval="10000">
-                                    <img src={l} style={{height: '150px', width: '100%', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
-                                    
-                                </div>
-                                
-                                <div className="carousel-item" data-bs-interval="2000">
-                                    <img src={l} style={{height: '150px', width: '100%', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
-                                    
-                                </div>
-
-                                <div className="carousel-item">
-                                    <img src={l} style={{height: '150px', width: '100%', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
-                                    
-                        </div>*/}
-
-                            </div>
-
-                            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                            </button>
-                            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                            </button>
-
-                        </div>
+                        
 
                     </div>
 
