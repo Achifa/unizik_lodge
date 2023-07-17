@@ -100,6 +100,9 @@ const Space = () => {
 
                 <textarea name="" id="" placeholder='Enter Lodge Name Here...'></textarea>
 
+                <hr />
+
+
                 <div className="agent-space-desc">
 
                     <h6>Set Lodge Price</h6>
@@ -110,6 +113,7 @@ const Space = () => {
                         <input type="text" id='price' />
                     </div>
                     
+                    <hr />
 
                     <h6>Set Lodge Location</h6>
                    
@@ -123,7 +127,7 @@ const Space = () => {
                         <input type="text" id='location2' />
                     </div>
 
-                    <hr />
+                    
 
                     <div className="agent-space-location" style={{display: 'block'}}>
 
@@ -164,6 +168,7 @@ const Space = () => {
 
                 </div>
 
+                    <hr />
 
 
                 <div className="agent-space-amenities">
