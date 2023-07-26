@@ -1,6 +1,5 @@
 import { Route, Link, useLocation, Routes, useNavigate, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Dashboard from "./pages/Dashboard";
 
 
 import './App.css'
@@ -17,8 +16,11 @@ import Lodge from "./pages/client/Lodge";
 
 import AgentHeader from "./components/AgentHeader";
 import AgentProfile from "./pages/agent/Profile";
+import AgentProfileInfo from "./pages/agent/Personal_Info";
 import AgentNotice from "./pages/agent/Notice";
 import AgentSpace from "./pages/agent/Space";
+import AgentSignup from "./pages/agent/Signup";
+import AgentSignin from "./pages/agent/Login";
 
 
 
@@ -72,7 +74,6 @@ const App = () => {
                 {/*Freelancer*/}
                 
                 
-                <Route path='/' element={<Dashboard />}></Route>
                 
                 
                 <Route path='/client' element={<Home />}></Route>
@@ -94,8 +95,11 @@ const App = () => {
 
                 <Route path='/agent' element={<AgentHome />}></Route>
                 <Route path='/agent/user' element={<AgentProfile />}></Route>
+                <Route path='/agent/user/info' element={<AgentProfileInfo />}></Route>
                 <Route path='/agent/notice' element={<AgentNotice />}></Route>
                 <Route path='/agent/space' element={<AgentSpace />}></Route>
+                <Route path='/agent/signup' element={<AgentSignup />}></Route>
+                <Route path='/agent/signin' element={<AgentSignin />}></Route>
                 
             </Routes>
 

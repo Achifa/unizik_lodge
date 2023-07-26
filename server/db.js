@@ -7,7 +7,7 @@ let connectToDatabase = new Promise((resolve, reject) => {
         port: 5432,
         user: "postgres",
         password: "asdfghjkl",
-        database: "naija_times"
+        database: "Lodger"
     });
  
     let conn = pool.connect();

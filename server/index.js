@@ -2,6 +2,7 @@ const { express,path,fs,parser,mocha,cors,shortId,jwt,io} = require('./modules')
 
 
 const cookieParser = require('cookie-parser');
+const { agent_router } = require('./routes/agent');
 
 require('dotenv').config();
 
@@ -19,7 +20,7 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-
+app.use(agent_router);
 /*app.use(author_router);
 app.use(admin_router);
 app.use(client_router);*/

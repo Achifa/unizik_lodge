@@ -16,6 +16,7 @@ const Header = () => {
     let [HomeHeader, setHomeHeader] = useState(false);
     let [LodgeHeader, setLodgeHeader] = useState(false);
 
+
     let nav = useNavigate();
 
     let location = useLocation();
@@ -35,6 +36,8 @@ const Header = () => {
             setHomeHeader(true)
         }
     }, [location])
+
+    
 
 
 

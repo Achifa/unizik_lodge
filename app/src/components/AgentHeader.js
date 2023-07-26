@@ -6,6 +6,7 @@ import spaceSvg  from '../assets/svg/create-new-page-svgrepo-com.svg'
 import unizikSvg  from '../assets/images/Badge_of_Nnamdi_Azikiwe_University.png'
 import myImg from '../assets/images/Screenshot_20220720-122957.png'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { AUTHENTICATE_USER, CHECK_USER } from '../axios/agent';
 
 const AgentHeader = () => {
     let [filterDisplay , setFilterDisplay] = useState(false)
@@ -36,7 +37,17 @@ const AgentHeader = () => {
         }
     }, [location])
 
+    useEffect(() => {
 
+        AUTHENTICATE_USER()
+        .then((result) => console.log(result))
+        .catch(err => console.log(err))
+
+        CHECK_USER()
+        .then((result) => console.log(result))
+        .catch(err => console.log(err))
+
+    }, [location])
 
     return ( 
         <>

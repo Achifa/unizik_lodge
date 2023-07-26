@@ -1,13 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import addSvg  from '../../assets/svg/add-circle-svgrepo-com.svg'
 import removeSvg  from '../../assets/svg/remove-svgrepo-com.svg'
 import l from '../../assets/images/WhatsApp Image 2023-07-05 at 20.52.40.jpg'
+import {useDispatch, useSelector} from 'react-redux';
+import  { setFacilitiesTo } from '../../redux/agent/facilities';
+import { UPLOAD_AGENT_LODGE_FORM } from '../../axios/agent';
 
 
 const Space = () => {
 
-    let [imgs, setImgs] = useState([])
-    let [vids, setVids] = useState([])
+    let [name, setname] = useState()
+    let [desc, setdesc] = useState()
+    
+    let [price, setprice] = useState()
+    
+    let [address1, setaddress1] = useState()
+    let [address2, setaddress2] = useState()
+
+    let [coord, setcoord] = useState() 
+
+    let [selectedfacilities, setSelectedfacilities] = useState([])
+
+    let [imgs, setImgs] = useState([]);
+    let [vids, setVids] = useState([]);
+
+    let [list, setList] = useState(null);
+
+
+    let [Items, setItems] = useState([])
+    let [sList, setSList] = useState([])
 
     let amenities = [
 
@@ -16,19 +37,114 @@ const Space = () => {
         {item: 'Balcony'},
         {item: 'Ground Floor'},
         {item: 'Pvc'},
-        {item: 'Wardrope'},
+        {item: 'Wardrope'}
         
-    ]
+    ]   
 
-    let [Items, setItems] = useState([])
-    let [selectedItems, setSelectedItems] = useState([])
+    let handleLodgeUpload = e => {
+        UPLOAD_AGENT_LODGE_FORM(name,price,address1,address2,coord,selectedfacilities.map(item => item.item).join(', '),[...imgs, ...vids]);
+    }
+
+    let handleSearch = e => {
+        let value = e.target.value;
+        
+        let result = amenities.filter(item => item.item.toLowerCase().indexOf(value.toLowerCase()) > -1);
+        let listItem = result.map(item => 
+            
+            <li style={{width: '100%', margin: '5px 0 5px 0', borderRadius: '5px'}}>
+                <span>
+                    {item.item}
+                </span>
+                <img src={addSvg}  onClick={e => {
+                         
+                    setSelectedfacilities(items => [...items, item])
+                    
+                    
+                        
+                    }}  style={{height: '20px', width: '20px', float: 'right', margin: '0 0 0 5px'}} alt="" />
+            
+            </li>
+        
+        )
+
+        setList(listItem)
+    }
+
+   
+ 
+    useEffect(() => {
+        let list = selectedfacilities.map((item, index) => 
+
+            <li key={index}>
+                <span>
+                    {item.item}
+                </span>
+
+                <img src={removeSvg} onClick={e => { 
+
+
+
+                    let deletedItem = selectedfacilities.filter(items => items.item === item.item)
+                    setSelectedfacilities(items => items.filter(sItem => sItem.item !== item.item));
+
+                    let list = [...document.querySelector('.list').children];
+                    let arrReset = []
+                    selectedfacilities.map(item => arrReset.push(item.item))
+                     
+                    
+                    let result = list.filter(item => deletedItem[0].item === item.children[0].innerHTML)
+
+                    result[0].style.opacity = '1'
+                    result[0].style.pointerEvents = 'all'
+            
+                    
+
+                     
+
+                }}  style={{height: '25px', width: '35px', float: 'right', margin: '0 0 0 5px'}} alt="" />
+
+            </li>
+             
+        )
+
+        setSList(list)
+
+    }, [selectedfacilities])
+
+   
+
+    let [isItemEmpty, setIsItemEmpty] = useState(false)
+    let [isSelectedItemEmpty, setIsSelectedItemEmpty] = useState(false)
+
+    
+
+
+    window.addEventListener('load', e => setItems(amenities));
 
     useEffect(() => {
+        let newArr = [...selectedfacilities, ...Items];
+        //let newArr = [1,2,3,4,5,6,7,1,2];
+        let arrReset = []
+        newArr.map(item => arrReset.push(item.item))
         
-        setItems(amenities);
+        let filter = arrReset.filter((item, index) => arrReset.indexOf(item) !== index) 
 
-    }, [])
+        let list = [...document.querySelector('.list').children];
 
+
+        filter.map(item => {
+            let result = list.filter(file => file.children[0].innerHTML === item)
+
+            result[0].style.opacity = '.5'
+            result[0].style.pointerEvents = 'none'
+
+        })
+
+        
+        //console.log(filter); 
+        //console.log(newArr); 
+
+    }, [selectedfacilities, Items]);
 
     let handleImg = e => {
         let file = e.target.files[0];
@@ -91,6 +207,25 @@ const Space = () => {
 
         reader.readAsDataURL(file) 
     }
+
+    useEffect(() => {
+
+        if(Items.length < 1){
+            setIsItemEmpty(true)
+        }else{
+            setIsItemEmpty(false)
+        }
+
+    }, [Items]) 
+
+    useEffect(() => {
+        if(selectedfacilities.length < 1){
+            setIsSelectedItemEmpty(true)
+        }else{
+            setIsSelectedItemEmpty(false)
+        }
+        
+    }, [selectedfacilities])
     
 
 
@@ -101,10 +236,17 @@ const Space = () => {
                 <h6>Lodge Name</h6>
                 <hr />
 
-                <textarea name="" id="" placeholder='Enter Lodge Name Here...'></textarea>
+                <textarea onInput={e => setname(e.target.value)} name="" id="" placeholder='Enter Lodge Name Here...'></textarea>
 
-                
+                <br />
+                <br />
 
+                {/*<h6>Lodge Description</h6>
+                <hr />
+
+    <textarea onInput={e => setdesc(e.target.value)} name="" id="" placeholder='Enter Lodge Description Here...' style={{height: '100px'}}></textarea>*/}
+
+                  
 
                 <div className="agent-space-desc">
 
@@ -114,7 +256,7 @@ const Space = () => {
 
                     <div className="agent-space-price">
                         <label htmlFor="price">Lodge Price</label>
-                        <input type="text" id='price' />
+                        <input onInput={e => setprice(e.target.value)} type="text" id='price' />
                     </div>
                     
                     
@@ -124,12 +266,12 @@ const Space = () => {
                    
                     <div className="agent-space-location">
                         <label htmlFor="location1">Address 1 <br />(Village name)</label>
-                        <input type="number" id='location1' />
+                        <input onInput={e => setaddress1(e.target.value)} type="text" id='location1' />
                     </div>
 
                     <div className="agent-space-location">
                         <label htmlFor="location2">Address 2 <br />(Street/Junction)</label>
-                        <input type="text" id='location2' />
+                        <input onInput={e => setaddress2(e.target.value)} type="text" id='location2' />
                     </div>
 
                     
@@ -138,12 +280,12 @@ const Space = () => {
 
                         <div style={{width: '40%',  padding: '10px', background: 'transparent', margin: '0 5px 0 5px', whiteSpace: 'nowrap',  float: 'left'}}>
                             <label htmlFor="north" style={{float: 'left',  fontWeight: 'bold'}}>Up School</label>
-                            <input name='coordinate' type="radio" id='north' style={{height: '25px', width: '35px', float: 'right'}} />
+                            <input name='coordinate' onInput={e => setcoord(e.target.value)} type="radio" id='north' style={{height: '25px', width: '35px', float: 'right'}} />
 
                         </div>
                         <div style={{width: '40%',  padding: '10px', background: 'transparent', margin: '0 5px 0 5px', whiteSpace: 'nowrap',  float: 'right'}}>
                             <label htmlFor="south" style={{float: 'left',  fontWeight: 'bold'}}>Down School</label>
-                            <input name='coordinate' type="radio" id='south' style={{height: '25px', width: '35px', float: 'right'}} />
+                            <input name='coordinate' onInput={e => setcoord(e.target.value)} type="radio" id='south' style={{height: '25px', width: '35px', float: 'right'}} />
 
                         </div>
                     </div>
@@ -174,41 +316,41 @@ const Space = () => {
                 </div>
 
                     
-
+ 
 
                 <div className="agent-space-amenities">
-
+                    <h6>
+                        Search for availble facilities
+                    </h6>
                     
-                    <h6>Facilities</h6>
+                    <div className="agent-space-amenities-search">
+                        <input style={{height: '50px', padding: '10px', width: '100%'}} type="text" placeholder='Search Facilities Here...' onInput={handleSearch} />
+
+                        <ul className='list' style={{listStyleType: 'none', height: list === null ? '0px' : 'fit-content'}}> 
+
+                            {
+                                list
+                            }
+                            
+                        </ul>
+                    </div>
+                    
+
+                    <h6>Selected Facilities</h6>
                     <ul>
                         {
-                            Items.map((item, index) => 
-                                <li key={index}>
-                                    <span>
-                                        {item.item}
-                                    </span>
-                                    <img src={addSvg} onClick={e => {setSelectedItems(txt => [...txt, item]); e.target.parentElement.remove();}}  style={{height: '25px', width: '35px', float: 'right', margin: '0 0 0 5px'}} alt="" />
-
-                                </li>
+                            isSelectedItemEmpty 
+                            &&
+                            (
+                                <span style={{width: '100%', height: '50px', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    <p>No items have been selected</p>
+                                </span>
                             )
                         }
-                    </ul>
 
-
-                    <h6>Availble Facilities</h6>
-                    <ul>
                         
                         {
-                            selectedItems.map((item, index) => 
-                                <li key={index}>
-                                    <span>
-                                        {item.item}
-                                    </span>
-                                    <img src={removeSvg} onClick={e => {setItems(txt => [...txt, item]); e.target.parentElement.remove();}}  style={{height: '25px', width: '35px', float: 'right', margin: '0 0 0 5px'}} alt="" />
-
-                                </li>
-                                
-                            )
+                            sList
                         }
                         
                     </ul>
@@ -216,7 +358,7 @@ const Space = () => {
                 </div>
 
                 <div className="agent-space-submit-btn shadow">
-                    <button>
+                    <button style={{color: '#fff',background: 'linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% )'}} onClick={handleLodgeUpload}>
                         Upload
                     </button>
                 </div>
