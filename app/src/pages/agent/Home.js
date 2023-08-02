@@ -62,7 +62,26 @@ const Home = () => {
                         The lodge consists of multiple buildings or blocks that house individual rooms or apartments.The lodge consists of multiple buildings or blocks that house individual rooms or apartments.
                     </div>
 
-                    <div style={{margin: '0 10px 0 10px', fontWeight: 'bold'}}>Amenities</div>
+                    <div className="agent-client-location" style={{padding: '10px'}}>
+                        <span> 
+                            <img src={locationSvg} style={{height: '20px', width: '20px', marginBottom: '10px'}} alt="" />
+                        </span>
+                        <span style={{padding: '0 0 10px 0', fontSize: 'small', fontWeight: '500'}}>
+                            School Gate &#x2022; 
+                            &nbsp;
+                            <span style={{color: '#0040ff', fontSize: 'x-small', fontWeight: 'bold'}}>
+                                26 miles 
+                            </span>
+                            <span style={{fontSize: 'medium', fontWeight: '1000', margin: '0 5px 0 5px'}}>
+                                &#x2191;
+                            </span> 
+                            <span style={{color: '#0040ff', fontSize: 'x-small', fontWeight: 'bold'}}>
+                                from school gate
+                            </span>
+                        </span>
+                    </div>
+
+                    <div style={{margin: '0 10px 0 10px', fontWeight: '500'}}>Facilities</div>
 
                     <div className="agent-client-amenities">
                         <ul>
@@ -90,7 +109,7 @@ const Home = () => {
 
             <div className="agent-home">
 
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-x-lg-5 g-3 p-3">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-x-lg-5 g-1 p-2">
                     {
                         cols
                     }

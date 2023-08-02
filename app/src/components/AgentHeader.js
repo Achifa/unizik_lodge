@@ -17,6 +17,17 @@ const AgentHeader = () => {
     let [HomeHeader, setHomeHeader] = useState(false);
     let [LodgeHeader, setLodgeHeader] = useState(false);
 
+    let [CartHeader, setCartHeader] = useState(false);
+    let [SpaceHeader, setSpaceHeader] = useState(false);
+    let [InboxHeader, setInboxHeader] = useState(false);
+    let [NoticeHeader, setNoticeHeader] = useState(false);
+
+    let [SupportHeader, setSupportHeader] = useState(false);
+    let [SettingsHeader, setSettingsHeader] = useState(false);
+    let [PostHeader, setPostHeader] = useState(false);
+    let [InfoHeader, setInfoHeader] = useState(false);
+    let [LodgeBankHeader, setLodgeBankHeader] = useState(false);
+
     let nav = useNavigate();
 
     let location = useLocation();
@@ -26,16 +37,169 @@ const AgentHeader = () => {
             setProfileHeader(true)
             setHomeHeader(false)
             setLodgeHeader(false)
-        }else if(location.pathname.split('/').splice(-1)[0] === 'lodge'){
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'request'){
             setLodgeHeader(true)
             setProfileHeader(false)
             setHomeHeader(false)
-        }else{
+            
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'notice'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(true)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'earnings'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(true)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'space'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(false)
+            setSpaceHeader(true)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'inbox'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+            
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(true)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === ''){
             setProfileHeader(false)
             setLodgeHeader(false)
             setHomeHeader(true)
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'info'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(true)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'support'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(true)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'post'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(true)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'settings'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(true)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(false)
         }
-    }, [location])
+    }, [location]) 
 
     useEffect(() => {
 
@@ -155,19 +319,15 @@ const AgentHeader = () => {
                     (
                         <ul>
 
-                            <li>
-                                <img src={unizikSvg}  style={{height: '35px', width: '35px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px', position: 'absolute', left: '20px', top: '20px'}} alt="" />
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Lodge Request</h4> 
                             </li>
 
-                            <li onClick={e => nav('/agent/space')}>
-                                <img src={spaceSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" /> 
-                            </li> 
+                            
                             <li onClick={e => nav('/agent/notice')}>
                                 <img src={nnoticeSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
                             </li>
-                            <li onClick={e => nav('/agent/user')}>
-                                <img src={userSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
-                            </li>
+                          
                         </ul>
                     )
                 }
@@ -197,11 +357,9 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li onClick={e => nav('/agent/user')}>
-                                <img src={myImg} style={{height: '50px', width: '50px', borderRadius: '50%', position: 'absolute', left: '20px', top: '10px'}} alt="" />
-
-                                <span style={{fontSize: 'x-small', background: 'green', padding: '2.5px 5px 2.5px 2.5px', borderRadius: '5px', color: '#fff', position: 'absolute', left: '72px', top: '35px' }}>UserId: 667gh-76100-990ph</span> 
-                            </li> 
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h5>Lodge Request Details</h5> 
+                            </li>
 
                             <li onClick={e => nav('/agent/')}>
                                 <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
@@ -210,6 +368,142 @@ const AgentHeader = () => {
                         </ul>
                     )
                 }
+
+
+{
+                    CartHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Cart</h4> 
+                            </li>
+
+                            
+                            
+                        </ul>
+                    )
+                }
+
+                {
+                    SpaceHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Space</h4> 
+                            </li>
+
+                             
+                            
+                        </ul>
+                    )
+                }
+
+                {
+                    InboxHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Inbox</h4> 
+                            </li>
+
+                            
+                            
+                        </ul>
+                    )
+                }
+
+                {
+                    NoticeHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Notice</h4> 
+                            </li>
+
+                            <li onClick={e => nav('/agent/')}>
+                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
+                            
+                        </ul>
+                    )
+                }
+
+
+                {
+                    InfoHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Personla Data</h4> 
+                            </li>
+
+                            <li onClick={e => nav(-1)}>
+                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
+                            
+                        </ul>
+                    )
+                }
+
+                {
+                    PostHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>My Post</h4> 
+                            </li>
+
+                            <li onClick={e => nav(-1)}>
+                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
+                            
+                        </ul>
+                    )
+                }
+
+               
+                {
+                    SettingsHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Profile Settings</h4> 
+                            </li>
+
+                            
+                            <li onClick={e => nav(-1)}>
+                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
+                        </ul>
+                    )
+                }
+
+                {
+                    SupportHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                                <h4>Support</h4> 
+                            </li>
+
+                            <li onClick={e => nav(-1)}>
+                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
+                            
+                        </ul>
+                    )
+                }
+
+                
+
 
             </div>
         </>

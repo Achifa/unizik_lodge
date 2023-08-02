@@ -25,6 +25,13 @@ import AgentSpace from "./pages/agent/Space";
 import AgentClientRequest from "./pages/agent/ClientRequest";
 import AgentSignup from "./pages/agent/Signup";
 import AgentSignin from "./pages/agent/Login";
+import AgentNavigation from "./pages/agent/Nav";
+import AgentInbox from "./pages/agent/Inbox";
+import AgentEarnings from "./pages/agent/Earnings";
+import AgentSupport from "./pages/agent/Support";
+import AgentSettings from "./pages/agent/Settings";
+import AgentMyPost from "./pages/agent/MyPost";
+
 import Navigation from "./pages/client/Nav";
 import Inbox from "./pages/client/Inbox";
 import Notice from "./pages/client/Notice";
@@ -106,6 +113,14 @@ const App = () => {
                 set_active_nav(
                     ''
                 ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'notice'){
+                set_active_header(
+                    <Header />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
             }else{
                 set_active_header(
                     <Header />
@@ -120,13 +135,81 @@ const App = () => {
             
         }else if(location.pathname.split('/').splice(1,2)[0] === 'agent'){
 
-            set_active_header(
-                <AgentHeader />
-            )
+            if(location.pathname.split('/').splice(-1)[0] === 'lodge'){
 
-            set_active_nav(
-                ''
-            )
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    <AgentNavigation />
+                )  
+
+            }else if(location.pathname.split('/').splice(-1)[0] === 'info'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'post'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'lodge-bank'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'settings'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'support'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'notice'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'request'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else{
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    <AgentNavigation />
+                ) 
+            }
             
         }else {
             set_active_header(
@@ -192,7 +275,12 @@ const App = () => {
                 <Route path='/agent/client/request' element={<AgentClientRequest />}></Route>
                 <Route path='/agent/signup' element={<AgentSignup />}></Route>
                 <Route path='/agent/signin' element={<AgentSignin />}></Route>
+                <Route path='/agent/earnings' element={<AgentEarnings />}></Route>
                 
+                <Route path='/agent/inbox' element={<AgentInbox />}></Route>
+                <Route path='/agent/user/support' element={<AgentSupport />}></Route>
+                <Route path='/agent/user/settings' element={<AgentSettings />}></Route>
+                <Route path='/agent/user/post' element={<AgentMyPost />}></Route>
             </Routes>
             {
                 active_nav 

@@ -19,22 +19,17 @@ const Profile = () => {
         {
             title: 'My Post',
             svg: cartSvg,
-            link: ''
-        },
-        {
-            title: 'My Inbox',
-            svg: cartSvg,
-            link: ''
+            link: '/agent/user/post'
         },
         {
             title: 'Settings',
             svg: settingsSvg,
-            link: ''
+            link: '/agent/user/settings'
         },
         {
             title: 'Support',
-            supportSvg: supportSvg,
-            link: ''
+            svg: supportSvg,
+            link: '/agent/user/support'
         }
     ]
 
@@ -72,9 +67,7 @@ const Profile = () => {
 
                 </div>
 
-                <div className="client-profile-exit">
-                    Log Out
-                </div>
+                
             </div>
         </>
      );

@@ -377,10 +377,8 @@ const Header = () => {
                     &&
                     (
                         <ul>
-                            <li onClick={e => nav('/client/user')}>
-                                <img src={myImg} style={{height: '50px', width: '50px', borderRadius: '50%', position: 'absolute', left: '20px', top: '10px'}} alt="" />
-
-                                <span style={{fontSize: 'x-small', background: 'green', padding: '2.5px 5px 2.5px 2.5px', borderRadius: '5px', color: '#fff', position: 'absolute', left: '72px', top: '35px' }}>UserId: 667gh-76100-990ph</span> 
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
+                                <h4>Lodge Details</h4>
                             </li> 
 
                             <li onClick={e => nav('/client/')}>
@@ -446,7 +444,9 @@ const Header = () => {
                                 <h4>Notice</h4> 
                             </li>
 
-                            
+                            <li onClick={e => nav('/client/')}>
+                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
                             
                         </ul>
                     )

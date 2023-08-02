@@ -96,6 +96,7 @@
         list-style-type: none;
         display: flex;
         height: 100%;
+        margin: 0;
         float: right;
         align-items: center;
     }
@@ -263,17 +264,19 @@
     }
 
     .agent-home{
-        height: calc(100vh - 70px);
+        height: calc(100vh - 150px);
         width: 100%;
         overflow: auto;
         padding: 0 0 70px 0;
+        margin: 0;
         
     }
 
     .agent-card{
-        height: 300px;
+        height: 350px;
         width: 100%;
         border-radius: 5px;
+        margin: 0;
         background-color: #fff;
         cursor: pointer;
     }
@@ -479,6 +482,7 @@
         height: 30px;
         width: 100%;
         margin: 10px 0 0 0;
+        color: orange;
         font-size: small;
         font-weight: bold;
         padding: 0 10px 0 10px;
@@ -532,12 +536,12 @@
         background: linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% );
         position: relative;
         margin: 0 10px 0 10px;
-        border-radius: 2.5px;
+        border-radius: 5px;
     }
 
 
     .agent-space-body{
-        height: calc(100vh - 150px);
+        height: calc(100vh - 220px);
         width: 100%;
         padding: 10px;
         overflow: auto;
@@ -648,7 +652,7 @@
         width: 100%;
        
         position: fixed;
-        bottom: 0;
+        bottom: 60px;
         left: 0;
         padding: 5px;
         
@@ -656,7 +660,7 @@
         align-items: center;
         justify-content: center;
 
-        background-color: azure;
+        background-color: rgb(255, 255, 255);
     }
 
     .agent-space-submit-btn button{
@@ -704,7 +708,7 @@
 
 
     .agent-client-request{
-        height: calc(100vh - 150px);
+        height: calc(100vh - 160px);
         width: 100vw;
         padding: 10px;
         overflow: auto;
