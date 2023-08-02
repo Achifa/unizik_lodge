@@ -2,14 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import addSvg  from '../../assets/svg/add-circle-svgrepo-com.svg'
 import removeSvg  from '../../assets/svg/remove-svgrepo-com.svg'
 import l from '../../assets/images/WhatsApp Image 2023-07-05 at 20.52.40.jpg'
-import {useDispatch, useSelector} from 'react-redux';
-import  { setFacilitiesTo } from '../../redux/agent/facilities';
-import { UPLOAD_AGENT_LODGE_FORM } from '../../axios/agent';
+//import { UPLOAD_client_LODGE_FORM } from '../../axios/client';
 import locationSvg  from '../../assets/svg/location-pin-svgrepo-com (1).svg'
 import { useNavigate } from 'react-router-dom';
 
 
 const Space = () => {
+
+    let [priceRange0, setPriceRange0] = useState(0);
+    let [priceRange1, setPriceRange1] = useState(0);
 
     let navigate = useNavigate()
     let [name, setname] = useState()
@@ -24,9 +25,7 @@ const Space = () => {
 
     let [selectedfacilities, setSelectedfacilities] = useState([])
 
-    let [imgs, setImgs] = useState([]);
-    let [vids, setVids] = useState([]);
-
+  
     let [list, setList] = useState(null);
 
 
@@ -44,9 +43,9 @@ const Space = () => {
         
     ]   
 
-    let handleLodgeUpload = async(e) => {
-        document.querySelector('.agent-space-upload-overlay').setAttribute('id', 'active') 
-        let overlay = document.querySelector('.agent-space-upload-overlay');
+   /* let handleLodgeUpload = async(e) => {
+        document.querySelector('.client-space-upload-overlay').setAttribute('id', 'active') 
+        let overlay = document.querySelector('.client-space-upload-overlay');
 
         let success = (overlay) => {
             overlay.setAttribute('id', 'inactive');
@@ -59,7 +58,7 @@ const Space = () => {
 
             allData.map(item => 
                 item.value = ''
-            )
+            ) 
             setSelectedfacilities([])
             let list = [...document.querySelector('.list').children];
 
@@ -71,12 +70,12 @@ const Space = () => {
 
             })
 
-            let cnt = document.querySelector('.agent-space-view-carousel');
+            let cnt = document.querySelector('.client-space-view-carousel');
             cnt.innerHTML = '';
 
 
         }
-        let response = await UPLOAD_AGENT_LODGE_FORM(name,price,address1,address2,coord,selectedfacilities.map(item => item.item).join(', '),[...imgs, ...vids]);
+        let response = await UPLOAD_client_LODGE_FORM(name,price,address1,address2,coord,selectedfacilities.map(item => item.item).join(', '),[...imgs, ...vids]);
 
 
         console.log(response)
@@ -84,7 +83,7 @@ const Space = () => {
         let result = response ? setTimeout(() => success(overlay),1000) : false;
 
         //
-    }
+    }*/
  
     let handleSearch = e => {
         let value = e.target.value;
@@ -109,7 +108,7 @@ const Space = () => {
         )
 
         setList(listItem)
-    }
+    } 
 
    
  
@@ -187,67 +186,7 @@ const Space = () => {
 
     }, [selectedfacilities, Items]);
 
-    let handleImg = e => {
-        let file = e.target.files[0];
-        console.log(file)
-
-        let reader = new FileReader();
-
-        reader.addEventListener('load', result => {
-            //console.log(reader.result)
-            let url = reader.result;
-            setImgs(item => [...item, url]);
-
-            let frame = document.createElement('div');
-            frame.className = 'agent-space-view-photo-frame'
-
-            let img = document.createElement('img');
-            img.style.height = '100%'
-            img.style.width = '100%'
-            img.src = url
-
-            frame.appendChild(img);
-
-            let cnt = document.querySelector('.agent-space-view-carousel');
-            
-
-            cnt.append(frame)
-
-        })
-
-        reader.readAsDataURL(file) 
-    }
-
-    let handleVid = e => {
-        let file = e.target.files[0];
-        console.log(file)
-
-        let reader = new FileReader();
-
-        reader.addEventListener('load', result => {
-            //console.log(reader.result)
-            let url = reader.result;
-            setVids(item => [...item, url])
-
-            let frame = document.createElement('div');
-            frame.className = 'agent-space-view-video-frame'
-
-            let video = document.createElement('video');
-            video.style.height = '100%'
-            video.style.width = '100%'
-            video.src = url
-            video.autoplay = true;
-
-            frame.appendChild(video);
-
-            let cnt = document.querySelector('.agent-space-view-carousel');
-            
-
-            cnt.append(frame)
-        })
-
-        reader.readAsDataURL(file) 
-    }
+ 
 
     useEffect(() => {
 
@@ -269,17 +208,25 @@ const Space = () => {
     }, [selectedfacilities])
   
 
-    
+     
 
     return ( 
         <>
             
-            <div className="agent-space-body">
+            <div className="client-space-body">
 
-                <h6>Lodge Name</h6>
+                <h6>Title</h6>
                 <hr />
 
-                <textarea onInput={e => setname(e.target.value)} name="" id="" placeholder='Enter Lodge Name Here...'></textarea>
+                <textarea style={{height: '80px'}} onInput={e => setname(e.target.value)} name="" id="" placeholder='Enter Title Name Here...'></textarea>
+
+                <br />
+                <br />
+
+                <h6>Description</h6>
+                <hr />
+
+                <textarea style={{height: '180px', fontSize: 'medium', fontWeight: 'normal'}} onInput={e => setname(e.target.value)} name="" id="" placeholder='Enter Description Name Here...'></textarea>
 
                 <br />
                 <br />
@@ -291,35 +238,64 @@ const Space = () => {
 
                   
 
-                <div className="agent-space-desc">
+                <div className="client-space-desc">
 
-                    <h6>Set Lodge Price</h6>
+                    <h6>Set Budget</h6>
                     <hr />
 
 
-                    <div className="agent-space-price">
-                        <label htmlFor="price">Lodge Price</label>
-                        <input onInput={e => setprice(e.target.value)} type="text" id='price' />
+                    <div className="input-cnt" style={{padding: '15px'}}>
+                        <label htmlFor="i-price" style={{fontWeight: 'bold', width: '100%', padding: '0 10px 0 10px'}}>
+                            <span style={{float: 'left'}}>From</span>
+                            <span style={{float: 'right'}}>&#x20A6; &nbsp; {priceRange0}</span>
+                        </label>
+                        <input min={0} max={1000000} onInput={e => setPriceRange0(e.target.value)} style={{width: '100%', height: '5px', border: 'none', outline: 'none'}} type="range" defaultValue={0} name="" id="" />
+
                     </div>
-                    
-                    
+
+                    <div className="input-cnt" style={{padding: '15px'}}>
+                        <label htmlFor="f-price" style={{fontWeight: 'bold', width: '100%', padding: '0 10px 0 10px'}}>
+                            <span style={{float: 'left'}}>To</span>
+                            <span style={{float: 'right'}}>&#x20A6; &nbsp; {priceRange1}</span>
+                        </label>
+                        <input min={priceRange0} max={1000000} onInput={e => setPriceRange1(e.target.value)} style={{width: '100%', height: '5px', border: 'none', outline: 'none'}} type="range" defaultValue={priceRange0} name="" id="" />
+
+                    </div>
+
+                    <div className="input-cnt" style={{padding: '15px'}}>
+                        <div style={{float: 'left', width: '40%'}}>
+                            <h6 htmlFor="">From</h6>
+                            <input style={{width: '100%', float: 'left', height: '40px', outline: 'none', padding: '0 5px 0 5px'}} type="number" name="" id="" />
+                        </div>
+
+                        <div style={{float: 'right', width: '40%'}}>
+                            <h6 htmlFor="">To</h6>
+                            <input style={{width: '100%', float: 'right', height: '40px', outline: 'none', padding: '0 5px 0 5px'}} type="number" name="" id="" />
+                        </div>
+                    </div>
+
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
 
                     <h6>Set Lodge Location</h6>
                     <hr />
                    
-                    <div className="agent-space-location">
+                    <div className="client-space-location">
                         <label htmlFor="location1">Address 1 <br />(Village name)</label>
                         <input onInput={e => setaddress1(e.target.value)} type="text" id='location1' />
                     </div>
 
-                    <div className="agent-space-location">
+                    <div className="client-space-location">
                         <label htmlFor="location2">Address 2 <br />(Street/Junction)</label>
                         <input onInput={e => setaddress2(e.target.value)} type="text" id='location2' />
                     </div>
 
                     
 
-                    <div className="agent-space-location" style={{display: 'block'}}>
+                    <div className="client-space-location" style={{display: 'block'}}>
 
                         <div style={{width: '40%',  padding: '10px', background: 'transparent', margin: '0 5px 0 5px', whiteSpace: 'nowrap',  float: 'left'}}>
                             <label htmlFor="north" style={{float: 'left',  fontWeight: 'bold'}}>Up School</label>
@@ -333,47 +309,36 @@ const Space = () => {
                         </div>
                     </div>
 
-                    <h6>Upload Lodge Photos/Videos</h6>
-
-                    <div className="agent-space-view-carousel">
-
-                        
-
-                    </div>
-
-                    <div className="agent-space-view-btn" style={{height: '65px', width: '100%'}}>
-
-                        <input type="file" style={{display: 'none'}} onChange={handleImg} name="img" id="img" accept='image/*' />
-
-                        <input type="file" style={{display: 'none'}} onChange={handleVid} name="vid" id="vid" accept='video/*' />
-
-                        <label style={{width: '40%', float: 'left', height: '50px'}} htmlFor="img">
-                           Upload Photo
-                        </label>
-
-                        <label style={{width: '40%', float: 'right', height: '50px'}} htmlFor="vid">
-                            Upload Video
-                        </label>
-                    </div>
-
+                   
                 </div>
 
                     
  
 
-                <div className="agent-space-amenities">
+                <div className="client-space-amenities">
                     <h6>
-                        Search for availble facilities
+                        Search for facilities you need
                     </h6>
                     
-                    <div className="agent-space-amenities-search">
+                    <div className="client-space-amenities-search">
                         <input style={{height: '50px', padding: '10px', width: '100%'}} type="text" placeholder='Search Facilities Here...' onInput={handleSearch} />
 
                         <ul className='list' style={{listStyleType: 'none', height: list === null ? '0px' : 'fit-content'}}> 
 
-                            {
-                                list
-                            }
+                        {
+                            isSelectedItemEmpty 
+                            &&
+                            (
+                                <span style={{width: '100%', height: '50px', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    <h6>Search to select items</h6>
+                                </span>
+                            )
+                        }
+
+                        
+                        {
+                            list
+                        }
                             
                         </ul>
                     </div>
@@ -386,7 +351,7 @@ const Space = () => {
                             &&
                             (
                                 <span style={{width: '100%', height: '50px', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                    <p>No items have been selected</p>
+                                    <h6>No items have been selected</h6>
                                 </span>
                             )
                         }
@@ -400,17 +365,17 @@ const Space = () => {
 
                 </div>
 
-                <div className="agent-space-submit-btn shadow">
-                    <button style={{color: '#fff',background: 'linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% )'}} onClick={handleLodgeUpload}>
+                <div className="client-space-submit-btn shadow">
+                    <button style={{color: '#fff',background: 'linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% )'}} /*onClick={handleLodgeUpload}*/>
                         Upload
                     </button>
                 </div>
             </div>
 
-            <div id='inactive'  className="agent-space-upload-overlay">
+            <div id='inactive'  className="client-space-upload-overlay">
                 <div className="upload-box">
                     <br/>
-                    <span className="agent-upload-loader"></span>
+                    <span className="client-upload-loader"></span>
                     <br/>
 
                     <b>Uploading Article...</b>

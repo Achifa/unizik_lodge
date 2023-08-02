@@ -11,7 +11,9 @@ import shareSvg  from '../../assets/svg/share-svgrepo-com.svg'
 import stepSvg  from '../../assets/svg/step-up-female-svgrepo-com.svg'
 import l from '../../assets/images/WhatsApp Image 2023-07-05 at 20.52.40.jpg'
 
-const Home = () => {
+
+const MyPost = () => {
+
     let navigate = useNavigate();
 
     
@@ -185,23 +187,20 @@ const Home = () => {
         set_cols(data)
 
     }, [])
-    
+
+
     return ( 
         <>
-            
-
-            <div className="client-home">
-
+            <div className="client-posts">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-x-lg-5 g-2 p-2">
-                    {
-                        cols
-                    }
+                        {
+                            cols
+                        }
 
                 </div>
-
             </div>
         </>
      );
 }
  
-export default Home;
+export default MyPost;

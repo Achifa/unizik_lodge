@@ -60,7 +60,31 @@
     display: flex;
   }
 
+
+
+
+
+/**/
+
+
 @media screen and (max-width: 480px) {
+
+    #inactive{
+        display: none;
+    }
+
+    .agent-space-upload-overlay{
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        color: #fff;
+        background: linear-gradient(-45deg, rgb(0, 47, 128, .5) 0%, rgb(0,128,0, .5) 100% );
+        left: 0;
+    }
 
     .agent-header{
         height: 70px;
@@ -676,5 +700,77 @@
         margin: 2px;
         border: 1px dashed #000;
 
+    }
+
+
+    .agent-client-request{
+        height: calc(100vh - 150px);
+        width: 100vw;
+        padding: 10px;
+        overflow: auto;
+    }
+
+    .agent-client-request-head{
+        height: fit-content;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .agent-client-request-body{
+        height: fit-content;
+        width: 100%;
+        line-height: 25px;
+        padding: 5px;
+    }
+
+
+    /**/
+
+    .agent-client-request-item-list{
+        max-height: 300px;
+        width: 100%;
+        overflow: auto;
+        position: relative;
+        
+    }
+
+    .agent-client-request-item-list ul{
+        list-style-type: none;
+        width: 100%;
+        height: 100%;
+        margin: 2px 0 2px 0;
+        padding: 5px;
+        display: table;
+        background-color: #f4f4f4;
+    }
+
+    .agent-client-request-item-list ul li{
+        padding: 10px;
+        background: linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% );
+
+        float: left;
+        display: table-row;
+        position: relative;
+        color: #fff;
+        font-weight: 500;
+        margin: 5px;
+        border-radius: 20px;
+    }
+
+    .agent-client-request-btn{
+        position: fixed;
+        bottom: 0;
+        outline: none;
+        border: none;
+        left: 0;
+        padding: 15px;
+        height: 80px;
+        width: 100vw;
+        background-color: #FFF;
+    }
+
+    .agent-client-request-btn button{
+        height: 100%;
+        width: 100%;
     }
 }

@@ -1,38 +1,44 @@
 import userInfoSvg from '../../assets/svg/user-info-svgrepo-com.svg'
 import newsSvg from '../../assets/svg/news-feed-2-svgrepo-com.svg'
 import stuffsSvg from '../../assets/svg/resources-svgrepo-com.svg'
-import cartSvg from '../../assets/svg/cart-4-svgrepo-com (2).svg'
+import saveSvg from '../../assets/svg/save-svgrepo-com.svg'
 import settingsSvg from '../../assets/svg/settings-svgrepo-com.svg'
 import supportSvg from '../../assets/svg/support-svgrepo-com (1).svg'
+import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
-
+    let navigate = useNavigate();
     let profileList = 
     [
         {
             title: 'Personal Info',
+            link: '/client/user/info',
             svg: userInfoSvg
         },
-
+        /*{
+            title: 'History',
+            link: '/client/history',
+            svg: userInfoSvg
+        },*/
         {
-            title: 'News Feed',
-            svg: newsSvg
-        },
-        {
-            title: 'Desired Amenities',
+            title: 'My Posts',
+            link: '/client/user/post',
             svg: stuffsSvg
         },
         {
-            title: 'Cart',
-            svg: cartSvg
+            title: 'Saved Lodges',
+            link: '/client/user/lodge-bank',
+            svg: saveSvg
         },
         {
             title: 'Settings',
+            link: '/client/user/settings',
             svg: settingsSvg
         },
         {
             title: 'Support',
-            supportSvg: supportSvg
+            link: '/client/user/support',
+            svg: supportSvg
         }
     ]
 
@@ -48,7 +54,7 @@ const Profile = () => {
                             profileList.map(item => {
                                 return (
                                     <>
-                                        <div className="col">
+                                        <div className="col" onClick={e => navigate(item.link)}>
                                             <div className="card" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 <img src={item.svg} alt="" style={{height: '20px', width: '20px', position: 'absolute', left: '20px'}} />
                                             
@@ -68,9 +74,9 @@ const Profile = () => {
 
                 </div>
 
-                <div className="client-profile-exit">
+                {/*<div className="client-profile-exit">
                     Log Out
-                </div>
+                    </div>*/}
             </div>
         </>
      );

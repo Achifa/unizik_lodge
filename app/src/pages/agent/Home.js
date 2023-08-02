@@ -37,7 +37,7 @@ const Home = () => {
         let data = list.map(item => 
             
             <div className="cols">
-                <div className="agent-card shadow">
+                <div className="agent-card shadow" onClick={e => navigate('client/request')}>
                     {/*<img src={l} style={{height: '60%', width: '100%', borderTopLeftRadius: '5px', borderTopRightRadius: '15px'}} alt=" />*/}
 
                     

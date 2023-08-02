@@ -159,9 +159,13 @@ let lodge = (req,res) => {
 
     let uid = shortId.generate();
     let date = Date().toString();
-    console.log(selectedfacilities)
+    console.log(selectedfacilities);
 
-    new Promise((resolve, reject) => {
+    let book = []
+
+    
+
+    var uploadData = () => {
         connectToDatabase.then((pool) => {
             pool.query(`
                 insert
@@ -174,61 +178,53 @@ let lodge = (req,res) => {
             `)
             .then((result) => {
                 if(result.rowCount === 1){
-                    resolve(true)
+                    res.status(200).send(true)
                 }else{
-                    reject(false)
+                    res.status(401).send(false)
                 }
             })
             .catch((err) => {
-                reject(err)
+                res.status(501).send(false)
             })
         })
         .catch((err) => {
-            reject(err)
+            res.status(501).send(false)
         })
+    }
 
-    })
-    .then(async() => {
-        let data = await fileUploader(files)
-        console.log(data)
-    })
-    .catch((err) => {
-        res.send(err);
-        console.log(err)
-    })
+    var uploadFiles = (files, resolve, reject) => {
+        files.map(async(file) => {
+           connectToDatabase.then((pool) => {
+                pool.query(
+                    `insert into "Lodge_files"(id, file, lodge_id) values(DEFAULT, '${file}', '${uid}')` 
+                )
+                .then(({rowCount}) => {
+                    
+                    book.push(rowCount);
+                    let bool = () => book.length === files.length ? resolve() : true
 
-    let fileUploader = (items => 
-        items.map(async(item) => {
-            let database = await connectToDatabase
-            .then(async(pool) =>  
-                await pool.query(`
-                    insert
-                    into
-                    "Lodge_files"
-                    (id,file,lodge_id)
-    
-                    values
-                    (DEFAULT,'${uid}','${item}')
-                `)
-                
-                //db.rowCount === 1 ? true : false
-            )
-            .catch((err) => {
-                //res.send(err)
-            })
-
-            //console.log(database.rowCount)
-
-            let counts = [];
-            counts.push(database.rowCount)
-            if(counts.length === files.length){
-                return counts
-            } 
-
-            
+                    book.map(item => item !== 1 ? reject({err: 'Files failed to upload. code: 002'}) : bool())
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+           })
+           
         })
-    
-    )
+    }
+
+    new Promise((resolve, reject) => {
+        uploadFiles(files, resolve, reject);
+     })
+     .then(async() => {
+        console.log({success: 'Files was uploaded', book})
+         uploadData();
+     })
+     .catch((err) => {
+         res.send(err);
+         console.log(err)
+     })
+ 
 }
 
 
