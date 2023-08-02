@@ -201,6 +201,22 @@ const App = () => {
                 set_active_nav(
                     ''
                 ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'signup'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'signin'){
+                set_active_header(
+                    <AgentHeader />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
             }else{
                 set_active_header(
                     <AgentHeader />

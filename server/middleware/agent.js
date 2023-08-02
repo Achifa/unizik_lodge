@@ -9,6 +9,7 @@ const agentAuthentication = (req, res, next) => {
     //check json web token exists & verified
     if(token) {
         jwt.verify(token, 'agent_secret_token', (err, decodedToken) => {
+            console.log(decodedToken)
             if(err){
                 res.status(200).send(false)
             }else{
@@ -34,9 +35,10 @@ const checkAgent = (req, res, next) => {
                 connectToDatabase
                 .then((pool) => {
                     pool.query(`
-                        select * from "Agent" where "agent_id" = '${decodedToken.id}'
+                        select agentId,agentName,fname,lname,email,phone,date,gender,sname,is_active,address1,address2 from "Agent" where "agentid" = '${decodedToken.id}'
                     `)
                     .then((result, err) => {
+                        console.log(decodedToken.id)
                         if(result){
                             res.status(200).send({bool: true, user: result.rows[0]});
                             next();

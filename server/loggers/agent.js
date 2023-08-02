@@ -34,10 +34,11 @@ const logger = (email) => {
             connectToDatabase
             .then(async(pool) => {
                 let database_return_value = await pool.query(
-                    `select "email", "pwd", "agent_id" from "Agent" where "id" = '${id}'`
+                    `select "email", "pwd", "agentid" from "Agent" where "id" = '${id}'`
                 )
                 .then(result => result.rows[0])
                 .catch(err => console.log(err))
+                //console.log(database_return_value)
 
                 return database_return_value
             })
@@ -55,7 +56,7 @@ let loggerEndResult = async(user,pwd,res,createToken,maxAge) => {
 
         const auth = await bcrypt.compare(pwd, user.pwd);
         if (auth) {
-            const token = createToken(user.agent_id);
+            const token = createToken(user.agentid);
             res.cookie('agent_JWT', token, {
                 maxAge: maxAge * 1000,
                 httpOnly: true,
@@ -65,7 +66,7 @@ let loggerEndResult = async(user,pwd,res,createToken,maxAge) => {
             });
 
             res.status(200).send({
-                user: user.agent_id
+                user: user.agentid
             });
 
         }else{

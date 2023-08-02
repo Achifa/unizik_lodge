@@ -82,8 +82,8 @@ export let CHECK_USER = ()  => {
 }
 
 
-export let UPLOAD_AGENT_LODGE_FORM = (name,price,address1,address2,coord,selectedfacilities,files)  => {
-    console.log(name,price,address1,address2,coord,selectedfacilities,files)
+export let UPLOAD_AGENT_LODGE_FORM = (name,agentId,price,address1,address2,coord,selectedfacilities,files)  => {
+    console.log(name,agentId,price,address1,address2,coord,selectedfacilities,files)
     return new Promise((resolve, reject) => { 
 
         axios.post(`http://${url}:1234/agent/lodge`, {

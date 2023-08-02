@@ -42,6 +42,7 @@ const Login = () => {
 
         submit()
         .then((data) => {
+            console.log(data)
             if(data.user){
                 navigate(`/agent`)
 

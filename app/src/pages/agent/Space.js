@@ -13,7 +13,7 @@ const Space = () => {
 
     let navigate = useNavigate()
     let [name, setname] = useState()
-    let [desc, setdesc] = useState()
+    let [agentId, setagentId] = useState()
     
     let [price, setprice] = useState()
     
@@ -43,6 +43,10 @@ const Space = () => {
         {item: 'Wardrope'}
         
     ]   
+
+    useEffect(() => {
+
+    }, [])
 
     let handleLodgeUpload = async(e) => {
         document.querySelector('.agent-space-upload-overlay').setAttribute('id', 'active') 
@@ -76,7 +80,7 @@ const Space = () => {
 
 
         }
-        let response = await UPLOAD_AGENT_LODGE_FORM(name,price,address1,address2,coord,selectedfacilities.map(item => item.item).join(', '),[...imgs, ...vids]);
+        let response = await UPLOAD_AGENT_LODGE_FORM(name,agentId,price,address1,address2,coord,selectedfacilities.map(item => item.item).join(', '),[...imgs, ...vids]);
 
 
         console.log(response)

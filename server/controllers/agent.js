@@ -96,10 +96,10 @@ let signup = async(req, res) => {
                 insert
                 into
                 "Agent"
-                (agent_id,agent_name,fname,lname,email,phone,pwd,date,gender,sname,is_active,id,address1,address2)
+                (id,agentId,agentName,fname,lname,email,phone,pwd,date,gender,sname,is_active,address1,address2)
 
                 values
-                ('${uid}','${uname}','${fname}','${lname}','${email}','${phone}','${h_pwd}','${date}','${gender}','${sname}','${false}',DEFAULT,'${address1}','${address2}')
+                (DEFAULT,'${uid}','${uname}','${fname}','${lname}','${email}','${phone}','${h_pwd}','${date}','${gender}','${sname}','${false}','${address1}','${address2}')
             `)
             .then((result) => {
                 if(result.rowCount === 1){
@@ -124,7 +124,7 @@ let signup = async(req, res) => {
                     insert
                     into
                     "photos"
-                    (id,user_id,file)
+                    (id,userId,file)
 
                     values
                     (DEFAULT,'${uid}','${photo}')
@@ -155,7 +155,7 @@ let signup = async(req, res) => {
 }
 
 let lodge = (req,res) => {
-    let {name,price,address1,address2,coord,selectedfacilities,files} = req.body;
+    let {name,price,address1,address2,coord,selectedfacilities,files,agentId} = req.body;
 
     let uid = shortId.generate();
     let date = Date().toString();
@@ -171,10 +171,9 @@ let lodge = (req,res) => {
                 insert
                 into
                 "Lodge"
-                (id,lodge_id,name,price,address1,address2,coordinates,facilities,date)
-
+                (id,lodgeid,name,price,address1,address2,coordinates,facilities,date,agentId)
                 values
-                (Default,'${uid}','${name}','${price}','${address1}','${address2}','${coord}','{"facilities": "${selectedfacilities}"}','${date}')
+                (Default,'${uid}','${name}','${price}','${address1}','${address2}','${coord}','{"facilities": "${selectedfacilities}"}','${date}','${agentId}')
             `)
             .then((result) => {
                 if(result.rowCount === 1){
@@ -184,10 +183,13 @@ let lodge = (req,res) => {
                 }
             })
             .catch((err) => {
+                console.log(err)
                 res.status(501).send(false)
             })
         })
         .catch((err) => {
+            console.log(err)
+
             res.status(501).send(false)
         })
     }
@@ -196,7 +198,7 @@ let lodge = (req,res) => {
         files.map(async(file) => {
            connectToDatabase.then((pool) => {
                 pool.query(
-                    `insert into "Lodge_files"(id, file, lodge_id) values(DEFAULT, '${file}', '${uid}')` 
+                    `insert into "LodgeFiles"(id, file, lodgeId) values(DEFAULT, '${file}', '${uid}')` 
                 )
                 .then(({rowCount}) => {
                     
@@ -232,7 +234,7 @@ let lodge = (req,res) => {
 
 let login = (req, res) => {
     let {email,pwd} = req.body;
-    console.log(email, pwd)
+    //console.log(email, pwd)
     let LogInAgent = logger(email);
 
     LogInAgent.then((user) => {
