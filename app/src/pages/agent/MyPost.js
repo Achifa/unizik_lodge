@@ -53,36 +53,34 @@ const MyPost = () => {
                         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
     
                             <div className="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                {
+                                    result.files.map((item, index) => 
+                                        
+                                        index === 0 
+                                        ? 
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button> 
+                                        :
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    
+                                    )
+                                }
+                                
                             </div>
     
                             <div className="carousel-inner">
     
-                                <div className="carousel-item active" data-bs-interval="10000">
-                                    <img src={l} style={{height: '168px', width: '100%'}} alt="" />
-                                    {/*<div className="carousel-caption d-none d-md-block">
-                                        <h5>First slide label</h5>
-                                        <p>Some representative placeholder content for the first slide.</p>
-            </div>*/}
-                                </div>
+                                {
+                                    result.files.map(item => 
+                                        
+                                        <div className="carousel-item active" data-bs-interval="10000">
+                                            <img src={item.file} style={{height: '168px', width: '100%'}} alt="" />
+                                            
+                                        </div>
+                                    
+                                    )
+                                }
     
-                                <div className="carousel-item" data-bs-interval="2000">
-                                    <img src={l} style={{height: '168px', width: '100%'}} alt="" />
-                                    {/*<div className="carousel-caption d-none d-md-block">
-                                        <h5>Second slide label</h5>
-                                        <p>Some representative placeholder content for the second slide.</p>
-        </div>*/}
-                                </div>
-    
-                                <div className="carousel-item">
-                                    <img src={l} style={{height: '168px', width: '100%'}} alt="" />
-                                    {/*<div className="carousel-caption d-none d-md-block">
-                                        <h5>Third slide label</h5>
-                                        <p>Some representative placeholder content for the third slide.</p>
-    </div>*/}
-                                </div>
+                                
     
                             </div>
     
@@ -107,6 +105,7 @@ const MyPost = () => {
                                     <span >{item.price}</span>
                                 </div>
                             </div>
+
                             <div className="client-lodge-data2">
                                 <div className="client-lodge-location">
                                     <span>
@@ -142,6 +141,7 @@ const MyPost = () => {
                                 </div>  
     
                             </div>
+
                             <div className="client-lodge-data3" style={{background: '#fff', display: 'flex'}}>
                                 <span style={{fontSize: 'x-small', fontWeight: 'bold', margin: '0 5px 0 5px', whiteSpace: 'nowrap'}}>
                                     <span style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-start'}}>
@@ -204,10 +204,9 @@ const MyPost = () => {
         <>
             <div className="client-posts">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-x-lg-5 g-2 p-2">
-                        {
-                            cols
-                        }
-
+                    {
+                        cols
+                    }
                 </div>
             </div>
         </>

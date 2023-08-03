@@ -7,19 +7,32 @@ NEWS
 let u1 = 'localhost'
 let u2 = '192.168.3.146'
 
-let url = `${u2}`
+let url = `${u1}`
 
-export let GET_NEWS_HEADLINE = (type)  => {
-    
-    return new Promise((resolve, reject) => {
+export let GET_AGENT_LODGE = ()  => {
+    console.log()
+    return new Promise((resolve, reject) => { 
 
-        axios.get(`http://${url}:3030/client/news/headlines`, {
-            params: {
-                type
-            }
+        axios.get(`http://${url}:1234/client/lodge-bank`, {})
+        .then((result) => {
+            resolve(result.data); 
+        })
+        .catch((err) => {
+            reject(err);
+        })
+
+    })
+}
+
+export let UPLOAD_CLIENT_LODGE_FORM = (name,agentId,price,address1,address2,coord,selectedfacilities,files)  => {
+    console.log(name,agentId,price,address1,address2,coord,selectedfacilities,files)
+    return new Promise((resolve, reject) => { 
+
+        axios.post(`http://${url}:1234/agent/lodge`, {
+            name,agentId,price,address1,address2,coord,selectedfacilities,files
         })
         .then((result) => {
-            resolve(result.data);
+            resolve(result.data); 
         })
         .catch((err) => {
             reject(err);

@@ -4,6 +4,7 @@ const { express,path,fs,parser,mocha,cors,shortId,jwt,io} = require('./modules')
 const cookieParser = require('cookie-parser');
 const { agent_router } = require('./routes/agent');
 const { connectToDatabase } = require('./db');
+const { client_router } = require('./routes/client');
 
 require('dotenv').config();
 
@@ -24,6 +25,7 @@ app.use(cors({
 
 //connectToDatabase.then((pool) => pool.query(``, (err,result) => console.log(result))).catch(err => console.log(err))
 app.use(agent_router);
+app.use(client_router);
 /*app.use(author_router);
 app.use(admin_router);
 app.use(client_router);*/

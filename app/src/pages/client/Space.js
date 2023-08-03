@@ -43,7 +43,7 @@ const Space = () => {
         
     ]   
 
-   /* let handleLodgeUpload = async(e) => {
+   /*let handleLodgeUpload = async(e) => {
         document.querySelector('.client-space-upload-overlay').setAttribute('id', 'active') 
         let overlay = document.querySelector('.client-space-upload-overlay');
 
