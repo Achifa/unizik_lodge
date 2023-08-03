@@ -155,11 +155,12 @@ let signup = async(req, res) => {
 }
 
 let lodge = (req,res) => {
-    let {name,price,address1,address2,coord,selectedfacilities,files,agentId} = req.body;
+    let {name,agentId,price,address1,address2,coord,selectedfacilities,files} = req.body;
+    console.log(name,agentId,price,address1,address2,coord,selectedfacilities,files)
 
     let uid = shortId.generate();
     let date = Date().toString();
-    console.log(selectedfacilities);
+    console.log(agentId);
 
     let book = []
 
@@ -171,7 +172,7 @@ let lodge = (req,res) => {
                 insert
                 into
                 "Lodge"
-                (id,lodgeid,name,price,address1,address2,coordinates,facilities,date,agentId)
+                ("id","lodgeid","name","price","address1","address2","coordinates","facilities","date","agentId")
                 values
                 (Default,'${uid}','${name}','${price}','${address1}','${address2}','${coord}','{"facilities": "${selectedfacilities}"}','${date}','${agentId}')
             `)
@@ -198,7 +199,7 @@ let lodge = (req,res) => {
         files.map(async(file) => {
            connectToDatabase.then((pool) => {
                 pool.query(
-                    `insert into "LodgeFiles"(id, file, lodgeId) values(DEFAULT, '${file}', '${uid}')` 
+                    `insert into "LodgeFiles"("id", "file", "lodgeid", "agentId") values(DEFAULT, '${file}', '${uid}', '${agentId}')` 
                 )
                 .then(({rowCount}) => {
                     
@@ -242,7 +243,80 @@ let login = (req, res) => {
     })
 }
 
+let lodgeBank = (req,res) => {
+    let {agentId} = req.query;
+    console.log(agentId)
 
+    let doc = {};
+
+
+    var GET_DATA = (cb) => {
+        connectToDatabase.then((pool) => {
+            pool.query(`
+                select * from  "Lodge" where "agentId" = '${agentId}'
+            `)
+            .then((result) => {
+                //res.status(200).send(result.rows)
+                doc.data = result.rows;
+                cb()
+            })
+            .catch((err) => {
+                console.log(err)
+                doc.data = err;
+                cb()
+            })
+        })
+        .catch((err) => {
+            console.log(err)
+
+            res.status(501).send({err: 'Error connecting to db'})
+            cb()
+        })
+    }
+
+    var GET_FILES = (resolve) => {
+        connectToDatabase.then((pool) => {
+            pool.query(
+                `select * from "LodgeFiles" where "agentId" = '${agentId}'` 
+            )
+            .then((result) => {
+                doc.files = result.rows;
+                resolve()
+            })
+            .catch((err) => {
+                doc.files = err;
+                console.log(err)
+                resolve()
+
+            })
+        })
+        .catch((err) => {
+            console.log(err)
+            res.status(501).send({err: 'Error connecting to db'})
+            resolve()
+
+        })
+           
+    }
+
+    function getPost(cb){
+        GET_DATA(cb)
+    }
+
+    getPost(() => {
+        return new Promise(resolve => {
+            GET_FILES(resolve);
+        })
+        .then(() => {
+            res.status(200).send(doc);
+            console.log(doc)
+        })
+    })
+
+
+
+    
+}
 
 
 
@@ -253,4 +327,5 @@ module.exports = {
     lodge,
     signup,
     login,
+    lodgeBank
 }

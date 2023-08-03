@@ -6,14 +6,15 @@ import {useDispatch, useSelector} from 'react-redux';
 import  { setFacilitiesTo } from '../../redux/agent/facilities';
 import { UPLOAD_AGENT_LODGE_FORM } from '../../axios/agent';
 import locationSvg  from '../../assets/svg/location-pin-svgrepo-com (1).svg'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const Space = () => {
 
     let navigate = useNavigate()
+    let location = useLocation()
     let [name, setname] = useState()
-    let [agentId, setagentId] = useState()
+    let [agentId, setAgentId] = useState('')
     
     let [price, setprice] = useState()
     
@@ -44,11 +45,11 @@ const Space = () => {
         
     ]   
 
-    useEffect(() => {
-
-    }, [])
+   
 
     let handleLodgeUpload = async(e) => {
+        
+
         document.querySelector('.agent-space-upload-overlay').setAttribute('id', 'active') 
         let overlay = document.querySelector('.agent-space-upload-overlay');
 
@@ -68,7 +69,7 @@ const Space = () => {
             let list = [...document.querySelector('.list').children];
 
 
-            list.map(item => {
+            list.map((item) => { 
 
                 item.style.opacity = '1'
                 item.style.pointerEvents = 'all'
@@ -77,13 +78,14 @@ const Space = () => {
 
             let cnt = document.querySelector('.agent-space-view-carousel');
             cnt.innerHTML = '';
+            navigate('/agent/user/post');
 
 
         }
-        let response = await UPLOAD_AGENT_LODGE_FORM(name,agentId,price,address1,address2,coord,selectedfacilities.map(item => item.item).join(', '),[...imgs, ...vids]);
+        let response = await UPLOAD_AGENT_LODGE_FORM(name,window.localStorage.getItem('agentId'),price,address1,address2,coord,selectedfacilities.map(item => item.item).join(', '),[...imgs, ...vids]);
 
 
-        console.log(response)
+        //console.log(window.localStorage.getItem('agentId'))
 
         let result = response ? setTimeout(() => success(overlay),1000) : false;
 

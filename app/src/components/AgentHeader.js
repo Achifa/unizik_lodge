@@ -208,7 +208,7 @@ const AgentHeader = () => {
         .catch(err => console.log(err))
 
         CHECK_USER()
-        .then((result) => console.log(result))
+        .then((result) => window.localStorage.setItem('agentId', result.user.agentid))
         .catch(err => console.log(err))
 
     }, [location])

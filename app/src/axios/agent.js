@@ -87,7 +87,26 @@ export let UPLOAD_AGENT_LODGE_FORM = (name,agentId,price,address1,address2,coord
     return new Promise((resolve, reject) => { 
 
         axios.post(`http://${url}:1234/agent/lodge`, {
-            name,price,address1,address2,coord,selectedfacilities,files
+            name,agentId,price,address1,address2,coord,selectedfacilities,files
+        })
+        .then((result) => {
+            resolve(result.data); 
+        })
+        .catch((err) => {
+            reject(err);
+        })
+
+    })
+}
+
+export let GET_AGENT_LODGE_POST = (agentId)  => {
+    console.log(agentId)
+    return new Promise((resolve, reject) => { 
+
+        axios.get(`http://${url}:1234/agent/lodge-bank`, {
+            params: {
+                agentId
+            }
         })
         .then((result) => {
             resolve(result.data); 
