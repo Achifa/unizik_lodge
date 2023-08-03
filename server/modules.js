@@ -9,6 +9,5 @@ module.exports = {
     cors : require('cors'),
     shortId : require('short-id'),
     jwt : require('jsonwebtoken'),
-    bcrypt: require('bcryptjs'),
-    io: require('socket.io')
+    bcrypt: require('bcryptjs')
 }

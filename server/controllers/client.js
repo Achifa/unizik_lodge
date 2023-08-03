@@ -1,6 +1,6 @@
 const {connectToDatabase} = require('../db');
 const { logger, loggerEndResult } = require('../loggers/agent');
-const { express,path,fs,parser,cookieParser,mocha,morgan,io,cors,shortId,jwt} = require('../modules');
+const { express,path,fs,parser,cookieParser,mocha,morgan,cors,shortId,jwt} = require('../modules');
 const maxAge = 90 * 24 * 60 * 60; 
 const createToken = (id) => {
     return jwt.sign({ id }, 'agent_secret_token', {
