@@ -3,7 +3,7 @@ const { express,path,fs,parser,mocha,cors,shortId,jwt} = require('./modules');
 
 const cookieParser = require('cookie-parser');
 const { agent_router } = require('./routes/agent');
-const { connectToDatabase } = require('./db');
+//const { connectToDatabase } = require('./db');
 const { client_router } = require('./routes/client');
 
 require('dotenv').config();
@@ -13,7 +13,7 @@ require('dotenv').config();
 const app = express();
 app.use(cookieParser());
  
-let urls = ['http://localhost:3000', 'http://192.168.172.146:3000', 'https://unizik-lodge.vercel.app/'];
+let urls = ['http://localhost:3000', 'http://192.168.172.146:3000', 'https://unizik-lodge.vercel.app'];
 
 app.use(cors({
   origin: urls,
@@ -26,10 +26,6 @@ app.use(cors({
 //connectToDatabase.then((pool) => pool.query(``, (err,result) => console.log(result))).catch(err => console.log(err))
 app.use(agent_router);
 app.use(client_router);
-/*app.use(author_router);
-app.use(admin_router);
-app.use(client_router);*/
-
 
 app.get('/', (req,res) => {
   res.send({mssg: 'hello world'})
