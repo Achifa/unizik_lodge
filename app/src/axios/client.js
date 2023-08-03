@@ -8,13 +8,18 @@ let u1 = 'localhost'
 let u2 = '192.168.3.146'
 let u3 = 'unizik-lodge.vercel.app/'
 
+let protocol1 = 'http'
+let protocol2 = 'https'
+
+let p = protocol2;
+
 let url = `${u3}`
 
 export let GET_AGENT_LODGE = ()  => {
     console.log()
     return new Promise((resolve, reject) => { 
 
-        axios.get(`http://${url}:1234/client/lodge-bank`, {})
+        axios.get(`${p}://${url}:1234/client/lodge-bank`, {})
         .then((result) => {
             resolve(result.data); 
         })
@@ -29,7 +34,7 @@ export let UPLOAD_CLIENT_LODGE_FORM = (name,agentId,price,address1,address2,coor
     console.log(name,agentId,price,address1,address2,coord,selectedfacilities,files)
     return new Promise((resolve, reject) => { 
 
-        axios.post(`http://${url}:1234/agent/lodge`, {
+        axios.post(`${p}://${url}:1234/agent/lodge`, {
             name,agentId,price,address1,address2,coord,selectedfacilities,files
         })
         .then((result) => {
@@ -46,7 +51,7 @@ export let GET_NEWS_THUMBNAIL = (article_id)  => {
     
     return new Promise((resolve, reject) => {
 
-        axios.get(`http://${url}:3030/client/article/thumbnail`, {
+        axios.get(`${p}://${url}:3030/client/article/thumbnail`, {
             params: {
                 article_id
             }
@@ -65,7 +70,7 @@ export let GET_NEWS_TITLE = (id)  => {
     
     return new Promise((resolve, reject) => {
 
-        axios.get(`http://${url}:3030/client/news/title`, {
+        axios.get(`${p}://${url}:3030/client/news/title`, {
             params: {
                 id
             }
@@ -84,7 +89,7 @@ export let GET_NEWS_CONTENT = (id)  => {
      
     return new Promise((resolve, reject) => {
 
-        axios.get(`http://${url}:3030/client/news/content`, {
+        axios.get(`${p}://${url}:3030/client/news/content`, {
             params: {
                 id
             }
@@ -103,7 +108,7 @@ export let GET_ARTICLE_DATA = (article_id)  => {
     
     return new Promise((resolve, reject) => {
 
-        axios.get(`http://${url}:3030/client/article/info`, {
+        axios.get(`${p}://${url}:3030/client/article/info`, {
             params: {
                 article_id
             }
@@ -122,7 +127,7 @@ export let GET_SEARCH = (input)  => {
     
     return new Promise((resolve, reject) => {
 
-        axios.get(`http://${url}:3030/client/news/search`, {
+        axios.get(`${p}://${url}:3030/client/news/search`, {
             params: {
                 input
             }
@@ -145,7 +150,7 @@ ENGAGEMENTS
 
 export let UPLOAD_COMMENT = (article_id,user_id, name, mssg)  => {
     return new Promise((resolve, reject) => {
-        axios.post(`http://${url}:3030/client/comment`, {
+        axios.post(`${p}://${url}:3030/client/comment`, {
             article_id,user_id, name, mssg
         })
         .then((result) => {
@@ -159,7 +164,7 @@ export let UPLOAD_COMMENT = (article_id,user_id, name, mssg)  => {
 
 export let GET_COMMENT = (article_id)  => {
     return new Promise((resolve, reject) => {
-        axios.get(`http://${url}:3030/client/comment`, {
+        axios.get(`${p}://${url}:3030/client/comment`, {
             params: {
                 article_id
             }
@@ -175,7 +180,7 @@ export let GET_COMMENT = (article_id)  => {
 
 export let DELETE_COMMENT = (comment_id,article_id)  => {
     return new Promise((resolve, reject) => {
-        axios.delete(`http://${url}:3030/client/comment`, {
+        axios.delete(`${p}://${url}:3030/client/comment`, {
             params: {
                 comment_id,article_id
             }
@@ -193,7 +198,7 @@ export let ADD_VIEW = (user_id,name,article_id)  => {
     
     return new Promise((resolve, reject) => {
 
-        axios.post(`http://${url}:3030/client/news/view`, {
+        axios.post(`${p}://${url}:3030/client/news/view`, {
             user_id,name,article_id
         })
         .then((result) => {
@@ -216,7 +221,7 @@ export let AUTHENTICATE_USER = (id)  => {
     
     return new Promise((resolve, reject) => {
 
-        axios.get(`http://${url}:3030/client/authentication`, {
+        axios.get(`${p}://${url}:3030/client/authentication`, {
             withCredentials: true
         })
         .then((result) => {
@@ -231,7 +236,7 @@ export let AUTHENTICATE_USER = (id)  => {
 
 export let CHECK_USER = ()  => {
     return new Promise((resolve, reject) => {
-        axios.get(`http://${url}:3030/client/check_user`, {
+        axios.get(`${p}://${url}:3030/client/check_user`, {
           withCredentials: true 
         })
         .then((result) => {
@@ -245,7 +250,7 @@ export let CHECK_USER = ()  => {
 
 export let GET_USER_INFO = (user_id)  => {
     return new Promise((resolve, reject) => {
-        axios.get(`http://${url}:3030/client/info`, {
+        axios.get(`${p}://${url}:3030/client/info`, {
           params: {
             user_id
           }
@@ -265,7 +270,7 @@ SIGNUP / SIGNIN
 */
 export let SIGNIN = (email,pwd) => {
     return new Promise(async(resolve, reject) => {
-        fetch(`http://${url}:3030/client/login`, {
+        fetch(`${p}://${url}:3030/client/login`, {
             method: `POST`,
             credentials: `include`,
             body: JSON.stringify({
@@ -289,7 +294,7 @@ export let SIGNIN = (email,pwd) => {
 
 export let SIGNUP = (fname,lname,email,pwd,photo) => {
     return new Promise((resolve, reject) => {
-        axios.post(`http://${url}:3030/client/signup`, {
+        axios.post(`${p}://${url}:3030/client/signup`, {
             fname,lname,email,pwd,photo 
         })
         .then((result) => { 
