@@ -7,8 +7,9 @@ NEWS
 */
 let u1 = 'localhost'
 let u2 = '192.168.3.146'
+let u3 = 'unizik-lodge.vercel.app/'
 
-let url = `${u1}`
+let url = `${u3}`
 
 export let UPLOAD_AGENT_SIGNUP_FORM = (fname,lname,sname,email,phone,uname,gender,address1,address2,pwd,photo)  => {
     

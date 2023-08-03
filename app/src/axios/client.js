@@ -6,8 +6,9 @@ NEWS
 */
 let u1 = 'localhost'
 let u2 = '192.168.3.146'
+let u3 = 'unizik-lodge.vercel.app/'
 
-let url = `${u1}`
+let url = `${u3}`
 
 export let GET_AGENT_LODGE = ()  => {
     console.log()

@@ -13,7 +13,7 @@ require('dotenv').config();
 const app = express();
 app.use(cookieParser());
  
-let urls = ['http://localhost:3000', 'http://192.168.172.146:3000'];
+let urls = ['http://localhost:3000', 'http://192.168.172.146:3000', 'https://unizik-lodge.vercel.app/'];
 
 app.use(cors({
   origin: urls,
