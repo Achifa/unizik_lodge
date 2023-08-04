@@ -19,7 +19,7 @@ export let GET_AGENT_LODGE = ()  => {
     console.log()
     return new Promise((resolve, reject) => { 
 
-        axios.get(`${p}://${url}:1234/client/lodge-bank`, {})
+        axios.get(`${p}://${url}:1234/`, {})
         .then((result) => {
             resolve(result.data); 
         })
