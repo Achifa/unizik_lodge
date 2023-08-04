@@ -29,7 +29,7 @@ app.use(client_router);
 
 app.get('/', (req,res) => {
   res.send({mssg: 'hello world'})
-})
+});
 
 
 var server = app.listen(process.env.PORT,_ => console.log('app is live @',process.env.PORT));
@@ -41,7 +41,7 @@ io(server, {cors: {origin: '*'}}).on('connection', socket => {
 */
 
 process.on('unhandledRejection', (reason, promise) => {
-  console.log('Unhandled Rejection at:', reason.stack || reason)
+  console.log('Unhandled Rejection at:', reason.stack || reason);
   // Recommended: send the information to sentry.io
   // or whatever crash reporting service you use
 });

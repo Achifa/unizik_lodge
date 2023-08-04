@@ -12,10 +12,7 @@ let u3 = 'unizik-lodge.vercel.app/'
 let protocol1 = 'http'
 let protocol2 = 'https'
 
-let port1 = ''
-let port2 = ':1234/'
 
-let pt  = port1;
 
 let p = protocol2
 
@@ -25,7 +22,7 @@ export let UPLOAD_AGENT_SIGNUP_FORM = (fname,lname,sname,email,phone,uname,gende
     
     return new Promise((resolve, reject) => {
 
-        axios.post(`${p}://${url}/${pt}agent/signup`, {
+        axios.post(`${p}://${url}:1234/agent/signup`, {
             fname,lname,sname,email,phone,uname,gender,address1,address2,pwd,photo
         })
         .then((result) => {
@@ -40,7 +37,7 @@ export let UPLOAD_AGENT_SIGNUP_FORM = (fname,lname,sname,email,phone,uname,gende
 
 export let UPLOAD_AGENT_SIGNIN_FORM = (email,pwd) => {
     return new Promise(async(resolve, reject) => {
-        fetch(`${p}://${url}/${pt}/agent/login`, {
+        fetch(`${p}://${url}/agent/login`, {
             method: `POST`,
             credentials: `include`,
             body: JSON.stringify({
@@ -65,7 +62,7 @@ export let AUTHENTICATE_USER = (id)  => {
     
     return new Promise((resolve, reject) => {
 
-        axios.get(`${p}://${url}/${pt}/agent/authentication`, {
+        axios.get(`${p}://${url}:1234/agent/authentication`, {
             withCredentials: true
         })
         .then((result) => {
@@ -80,7 +77,7 @@ export let AUTHENTICATE_USER = (id)  => {
 
 export let CHECK_USER = ()  => {
     return new Promise((resolve, reject) => {
-        axios.get(`${p}://${url}/${pt}/agent/check-agent`, {
+        axios.get(`${p}://${url}:1234/agent/check-agent`, {
           withCredentials: true 
         })
         .then((result) => {
@@ -97,7 +94,7 @@ export let UPLOAD_AGENT_LODGE_FORM = (name,agentId,price,address1,address2,coord
     console.log(name,agentId,price,address1,address2,coord,selectedfacilities,files)
     return new Promise((resolve, reject) => { 
 
-        axios.post(`${p}://${url}/${pt}/agent/lodge`, {
+        axios.post(`${p}://${url}:1234/agent/lodge`, {
             name,agentId,price,address1,address2,coord,selectedfacilities,files
         })
         .then((result) => {
@@ -114,7 +111,7 @@ export let GET_AGENT_LODGE_POST = (agentId)  => {
     console.log(agentId)
     return new Promise((resolve, reject) => { 
 
-        axios.get(`${p}://${url}/${pt}/agent/lodge-bank`, {
+        axios.get(`${p}://${url}:1234/agent/lodge-bank`, {
             params: {
                 agentId
             }
