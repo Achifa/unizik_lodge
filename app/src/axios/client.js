@@ -6,7 +6,7 @@ NEWS
 */
 let u1 = 'localhost'
 let u2 = '192.168.3.146'
-let u3 = 'unizik-lodge.vercel.app/'
+let u3 = 'unizik-lodge-server.vercel.app/'
 
 let protocol1 = 'http'
 let protocol2 = 'https'
@@ -19,7 +19,7 @@ export let GET_AGENT_LODGE = ()  => {
     console.log()
     return new Promise((resolve, reject) => { 
 
-        axios.get(`${p}://${url}:1234/`, {})
+        axios.get(`${p}://${url}/`, {})
         .then((result) => {
             resolve(result.data); 
         })
