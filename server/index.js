@@ -27,9 +27,6 @@ app.use(cors({
 app.use(agent_router);
 app.use(client_router);
 
-app.get('/', (req,res) => {
-  res.send({mssg: 'hello world'})
-});
 
 
 var server = app.listen(process.env.PORT,_ => console.log('app is live @',process.env.PORT));
