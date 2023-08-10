@@ -61,8 +61,7 @@ let loggerEndResult = async(user,pwd,res,createToken,maxAge) => {
                 maxAge: maxAge * 1000,
                 httpOnly: true,
                 secure: true,
-                sameSite: 'None',
-                path: '/'
+                sameSite: 'None'
             });
 
             res.status(200).send({
