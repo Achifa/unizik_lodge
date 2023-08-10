@@ -16,7 +16,7 @@ app.use(cookieParser());
 let urls = ['http://localhost:3000', 'http://192.168.172.146:3000', 'https://unizik-lodge.vercel.app', 'https://unizik-lodge-server-l5u6tvnv3-achifa.vercel.app/'];
 
 app.use(cors({
-  origin: urls,
+  origin: true,
   methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE', 'UPDATE'],
   credentials: true,
   optionsSuccessStatus: 200
