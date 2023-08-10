@@ -1,5 +1,5 @@
 
-const { signup,login, lodge, lodgeBank } = require('../controllers/client');
+const { signup,login, lodge} = require('../controllers/client');
 //const { clientAuthentication, checkclient } = require('../middleware/client');
 const { express,path,fs,parser,cookieParser,mocha,morgan,io,cors,shortId,jwt,} = require('../modules');
 
