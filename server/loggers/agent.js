@@ -62,7 +62,7 @@ let loggerEndResult = async(user,pwd,res,createToken,maxAge) => {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'None',
-                domain: 'unizik-lodge.vercel.app'
+                path: '/'
             });
 
             res.status(200).send({
