@@ -61,7 +61,8 @@ let loggerEndResult = async(user,pwd,res,createToken,maxAge) => {
                 maxAge: maxAge * 1000,
                 httpOnly: true,
                 secure: true,
-                sameSite: 'None'
+                sameSite: 'None',
+                domain: 'unizik-lodge.vercel.app'
             });
 
             res.status(200).send({
