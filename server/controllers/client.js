@@ -242,7 +242,7 @@ let login = (req, res) => {
         loggerEndResult(user, pwd, res, createToken, maxAge)
     })
 }
-
+/*
 let lodgeBank = (req,res) => {
  
     let doc = {};
@@ -316,7 +316,7 @@ let lodgeBank = (req,res) => {
     
 }
 
-
+*/
 
 module.exports = {
     email_validation,
