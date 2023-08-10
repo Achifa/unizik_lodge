@@ -41,6 +41,7 @@ export let UPLOAD_AGENT_SIGNIN_FORM = (email,pwd) => {
         fetch(`${p}://${url}/agent/login`, {
             method: `POST`,
             credentials: `include`,
+            withCredentials: true,
             body: JSON.stringify({
                 email,pwd
             }),
