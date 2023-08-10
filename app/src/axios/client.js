@@ -7,7 +7,7 @@ NEWS
 let u1 = 'localhost'
 let u2 = '192.168.3.146'
 let u3 = 'unizik-lodge-server.vercel.app/',
-let u4 = 'https://lodge-server.onrender.com/'
+let u4 = 'lodge-server.onrender.com/'
 
 let protocol1 = 'http'
 let protocol2 = 'https'
