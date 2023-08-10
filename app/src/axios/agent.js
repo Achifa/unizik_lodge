@@ -8,6 +8,7 @@ NEWS
 let u1 = 'localhost'
 let u2 = '192.168.3.146'
 let u3 = 'unizik-lodge.vercel.app/'
+let u4 = 'https://lodge-server.onrender.com/'
 
 let protocol1 = 'http'
 let protocol2 = 'https'
@@ -16,7 +17,7 @@ let protocol2 = 'https'
 
 let p = protocol2
 
-let url = `${u3}`
+let url = `${u4}`
 
 export let UPLOAD_AGENT_SIGNUP_FORM = (fname,lname,sname,email,phone,uname,gender,address1,address2,pwd,photo)  => {
     
