@@ -40,7 +40,7 @@ export let UPLOAD_AGENT_SIGNIN_FORM = (email,pwd) => {
     return new Promise(async(resolve, reject) => {
         fetch(`${p}://${url}/agent/login`, {
             method: `POST`,
-            credentials: `include`,
+            credentials: "include",
             withCredentials: true,
             body: JSON.stringify({
                 email,pwd
