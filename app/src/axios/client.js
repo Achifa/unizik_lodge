@@ -21,7 +21,7 @@ export let GET_AGENT_LODGE = ()  => {
     console.log()
     return new Promise((resolve, reject) => { 
 
-        axios.get(`${p}://${url}`, {})
+        axios.get(`https://lodge-server.onrender.com/client/lodge-bank`, {})
         .then((result) => {
             resolve(result.data); 
         })
