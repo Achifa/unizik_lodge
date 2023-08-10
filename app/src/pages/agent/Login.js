@@ -45,7 +45,7 @@ const Login = () => {
             console.log(data)
             if(data.user){
                 window.localStorage.setItem('agentToken', data.token)
-                
+                //navigate(`/agent`)
 
             }else{
                 set_err(data.Mssg);
