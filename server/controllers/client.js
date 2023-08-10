@@ -324,6 +324,6 @@ module.exports = {
     phone_validation,
     lodge,
     signup,
-    login,
-    lodgeBank
+    login
+  
 }
