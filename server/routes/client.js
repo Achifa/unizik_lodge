@@ -15,7 +15,7 @@ client_router.post('/client/login', parser, login);
 
 client_router.get('/client/lodge-bank', lodgeBank);
 
-client_router.get('/', lodgeBank);
+//client_router.get('/', lodgeBank);
 
  
 module.exports = {client_router}
