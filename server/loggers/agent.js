@@ -60,7 +60,7 @@ let loggerEndResult = async(user,pwd,res,createToken,maxAge) => {
             res.cookie('agent_JWT', token, {
                 maxAge: maxAge * 1000,
                 httpOnly: true,
-                secure: false,
+                secure: true,
                 sameSite: 'lax',
                 path: '/'
             });
