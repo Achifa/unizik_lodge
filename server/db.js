@@ -4,7 +4,7 @@ let host = ["localhost", "postgresql-140872-0.cloudclusters.net"];
 let port = [19980,17935];
 let user = ["postgres", "Fabian"];
 let password = ["asdfghjkl"];
-let db = ["Lodger"];
+let db = ["lodger"];
 
 let connectToDatabase = new Promise((resolve, reject) => {
 
