@@ -10,7 +10,7 @@ let connectToDatabase = new Promise((resolve, reject) => {
 
     let pool = new Pool({
         host: host[1],
-        port: port[1],
+        port: port[0],
         user: user[1],
         password: password[0],
         database: db[0]
