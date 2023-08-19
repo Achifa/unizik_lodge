@@ -1,7 +1,7 @@
 const {Client,Pool} = require('pg');
 
 let host = ["localhost", "postgresql-140872-0.cloudclusters.net"];
-let port = [5432,17935];
+let port = [19980,17935];
 let user = ["postgres", "Fabian"];
 let password = ["asdfghjkl"];
 let db = ["Lodger"];
