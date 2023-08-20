@@ -172,7 +172,7 @@ let lodge = (req,res) => {
                 insert
                 into
                 "Lodge"
-                ("id","lodgeid","name","price","address1","address2","coordinates","facilities","date","agentId")
+                ("id","lodgeid","name","price","address1","address2","coordinates","facilities","date","agentid")
                 values
                 (Default,'${uid}','${name}','${price}','${address1}','${address2}','${coord}','{"facilities": "${selectedfacilities}"}','${date}','${agentId}')
             `)
@@ -199,7 +199,7 @@ let lodge = (req,res) => {
         files.map(async(file) => {
            connectToDatabase.then((pool) => {
                 pool.query(
-                    `insert into "LodgeFiles"("id", "file", "lodgeid", "agentId") values(DEFAULT, '${file}', '${uid}', '${agentId}')` 
+                    `insert into "LodgeFiles"("id", "file", "lodgeid", "agentid") values(DEFAULT, '${file}', '${uid}', '${agentId}')` 
                 )
                 .then(({rowCount}) => {
                     
