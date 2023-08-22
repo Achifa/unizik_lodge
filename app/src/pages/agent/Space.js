@@ -34,6 +34,11 @@ const Space = () => {
     let [Items, setItems] = useState([])
     let [sList, setSList] = useState([])
 
+
+    useEffect(() => {
+      setAgentId(window.localStorage.getItem(agentId))
+    }, [])
+
     let amenities = [
 
         {item: 'Light'},
