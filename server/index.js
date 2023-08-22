@@ -43,7 +43,7 @@ process.on('unhandledRejection', (reason, promise) => {
   // Recommended: send the information to sentry.io
   // or whatever crash reporting service you use
 });
-
+/*
 connectToDatabase.then((pool) => {
   pool.query(
     `
@@ -56,7 +56,7 @@ connectToDatabase.then((pool) => {
   
 })
 .catch((err) => console.log(err))
-
+*/
 /*
 
 

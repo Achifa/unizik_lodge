@@ -67,7 +67,7 @@ export let AUTHENTICATE_USER = (id)  => {
         axios.get(`${p}://${url}/agent/authentication`, {
             params: {
                 id
-            }
+            },
             withCredentials: true
         })
         .then((result) => {
