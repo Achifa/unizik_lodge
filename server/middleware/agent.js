@@ -23,6 +23,7 @@ const agentAuthentication = (req, res, next) => {
 
 const checkAgent = (req, res, next) => {
     const token = req.query.id;
+    console.log(req.query)
     //check json web token exists & verified
     if (token) {
         jwt.verify(token, 'agent_secret_token', async (err, decodedToken) => {
