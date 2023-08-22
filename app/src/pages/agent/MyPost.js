@@ -40,6 +40,9 @@ const MyPost = () => {
 
     ];
 
+    
+    
+
     useEffect(() => {
         GET_AGENT_LODGE_POST(window.localStorage.getItem('agentId'))
         .then((result) => {

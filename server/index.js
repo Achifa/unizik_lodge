@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const { agent_router } = require('./routes/agent');
 //const { connectToDatabase } = require('./db');
 const { client_router } = require('./routes/client');
+const { connectToDatabase } = require('./db');
 
 require('dotenv').config();
 
@@ -46,6 +47,18 @@ process.on('unhandledRejection', (reason, promise) => {
   // or whatever crash reporting service you use
 });
 
+connectToDatabase.then((pool) => {
+  pool.query(
+    `
+    select * from "LodgeFiles"
+    `
+  )
+  .then((result) => console.log(result))
+  .catch((err) => console.log(err))
+
+  
+})
+.catch((err) => console.log(err))
 
 /*
 
