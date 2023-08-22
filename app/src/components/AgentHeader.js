@@ -203,11 +203,11 @@ const AgentHeader = () => {
 
     useEffect(() => {
 
-        AUTHENTICATE_USER()
+        AUTHENTICATE_USER(window.localStorage.getItem('agentToken'))
         .then((result) => console.log(result))
         .catch(err => console.log(err))
 
-        CHECK_USER()
+        CHECK_USER(window.localStorage.getItem('agentToken'))
         .then((result) => window.localStorage.setItem('agentId', result.user.agentid))
         .catch(err => console.log(err))
 

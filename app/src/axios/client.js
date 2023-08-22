@@ -4,22 +4,24 @@ import axios from "axios";
 NEWS
 
 */
-let u1 = 'localhost'
-let u2 = '192.168.3.146'
-let u3 = 'unizik-lodge.vercel.app/'
+let u1 = 'localhost';
+let u2 = '192.168.3.146';
+let u3 = 'unizik-lodge-server.vercel.app/';
+
+let u4 = 'lodge-server.onrender.com/';
 
 let protocol1 = 'http'
 let protocol2 = 'https'
 
 let p = protocol2;
 
-let url = `${u3}`
+let url = `${u4}`
 
 export let GET_AGENT_LODGE = ()  => {
     console.log()
     return new Promise((resolve, reject) => { 
 
-        axios.get(`${p}://${url}:1234/client/lodge-bank`, {})
+        axios.get(`https://lodge-server.onrender.com/client/lodge-bank`, {})
         .then((result) => {
             resolve(result.data); 
         })

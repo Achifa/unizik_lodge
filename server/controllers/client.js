@@ -326,4 +326,5 @@ module.exports = {
     signup,
     login,
     lodgeBank
+  
 }
