@@ -65,6 +65,9 @@ export let AUTHENTICATE_USER = (id)  => {
     return new Promise((resolve, reject) => {
 
         axios.get(`${p}://${url}/agent/authentication`, {
+            params: {
+                id
+            }
             withCredentials: true
         })
         .then((result) => {
@@ -77,10 +80,13 @@ export let AUTHENTICATE_USER = (id)  => {
     })
 }
 
-export let CHECK_USER = ()  => {
+export let CHECK_USER = (id)  => {
     return new Promise((resolve, reject) => {
         axios.get(`${p}://${url}/agent/check-agent`, {
-          withCredentials: true 
+            params: {
+                id
+            },
+            withCredentials: true 
         })
         .then((result) => {
             resolve(result.data);
