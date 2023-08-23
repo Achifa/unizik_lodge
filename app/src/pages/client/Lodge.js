@@ -136,6 +136,7 @@ const Lodge = () => {
 
                     </div>
 
+                    {/*
                     <div className="client-availble-amnities">
 
 
@@ -149,7 +150,7 @@ const Lodge = () => {
                         </ul>
 
                     </div>
-
+                    */}
                     <br />
                     <br />
 
@@ -182,7 +183,7 @@ const Lodge = () => {
                     <button style={{padding: '12px 15px 12px 15px', background: 'linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% )', color: '#fff', display: 'flex', alignItems: 'center', position: 'relative', whiteSpace: 'nowrap', borderRadius: '5px', border: 'none', }}>
                         <img src={agentSvg} style={{height: '30px',float: 'left', width: '20px', marginRight: '10px'}} alt="" />
                         
-                        <h6 style={{float: 'right', marginTop: '8px', width: '90%', fontSize: 'small'}}>Contact Our Agent Here For More Enquiries</h6>
+                        <h6 style={{float: 'right', marginTop: '8px', width: '90%', fontSize: 'small'}} onClick={e => navigate('chat')}>Contact Our Agent Here For More Enquiries</h6>
                     </button> 
                     <br />
                 </div>
@@ -193,4 +194,4 @@ const Lodge = () => {
      );
 }
  
-export default Lodge;
+export default Lodge; 

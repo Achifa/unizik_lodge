@@ -1,19 +1,21 @@
 import axios from "axios";
 
+
 /*
 NEWS
 
 */
-let u1 = 'localhost';
-let u2 = '192.168.3.146';
-let u3 = 'unizik-lodge-server.vercel.app/';
-
-let u4 = 'lodge-server.onrender.com/';
+let u1 = 'localhost'
+let u2 = '192.168.3.146'
+let u3 = 'unizik-lodge.vercel.app'
+let u4 = 'lodge-server.onrender.com'
 
 let protocol1 = 'http'
 let protocol2 = 'https'
 
-let p = protocol2;
+
+
+let p = protocol2
 
 let url = `${u4}`
 
@@ -294,17 +296,20 @@ export let SIGNIN = (email,pwd) => {
     }) 
 }
 
-export let SIGNUP = (fname,lname,email,pwd,photo) => {
+export let UPLOAD_CLIENT_SIGNUP_FORM = (fname,lname,sname,email,phone,uname,gender,pwd,photo)  => {
+    
     return new Promise((resolve, reject) => {
-        axios.post(`${p}://${url}:3030/client/signup`, {
-            fname,lname,email,pwd,photo 
+
+        axios.post(`${p}://${url}/client/signup`, {
+            fname,lname,sname,email,phone,uname,gender,pwd,photo
         })
-        .then((result) => { 
-            resolve(result)
+        .then((result) => {
+            resolve(result.data); 
         })
         .catch((err) => {
-            reject(err)
+            reject(err);
         })
+
     })
 }
 

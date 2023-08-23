@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-import nnoticeSvg  from '../assets/svg/bell-svgrepo-com.svg'
-import userSvg  from '../assets/svg/user-svgrepo-com (1).svg'
-import backSvg  from '../assets/svg/back-svgrepo-com (1).svg'
-import spaceSvg  from '../assets/svg/create-new-page-svgrepo-com.svg'
-import unizikSvg  from '../assets/images/Badge_of_Nnamdi_Azikiwe_University.png'
-import myImg from '../assets/images/Screenshot_20220720-122957.png'
+import filterSvg  from '../../assets/svg/filter-rectangle-svgrepo-com.svg'
+import userSvg  from '../../assets/svg/user-svgrepo-com (1).svg'
+import backSvg  from '../../assets/svg/back-svgrepo-com (1).svg'
+import bellSvg  from '../../assets/svg/bell-svgrepo-com.svg'
+import unizikSvg  from '../../assets/images/Badge_of_Nnamdi_Azikiwe_University.png'
+import myImg from '../../assets/images/Screenshot_20220720-122957.png'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { AUTHENTICATE_USER, CHECK_USER } from '../axios/agent';
 
-const AgentHeader = () => {
+const Header = () => {
     let [filterDisplay , setFilterDisplay] = useState(false)
     let [priceRange0, setPriceRange0] = useState(0);
     let [priceRange1, setPriceRange1] = useState(0);
@@ -27,6 +26,8 @@ const AgentHeader = () => {
     let [PostHeader, setPostHeader] = useState(false);
     let [InfoHeader, setInfoHeader] = useState(false);
     let [LodgeBankHeader, setLodgeBankHeader] = useState(false);
+
+
 
     let nav = useNavigate();
 
@@ -48,7 +49,7 @@ const AgentHeader = () => {
             setPostHeader(false)
             setInfoHeader(false)
             setLodgeBankHeader(false)
-        }else if(location.pathname.split('/').splice(-1)[0] === 'request'){
+        }else if(location.pathname.split('/').splice(-1)[0] === 'lodge'){
             setLodgeHeader(true)
             setProfileHeader(false)
             setHomeHeader(false)
@@ -78,7 +79,7 @@ const AgentHeader = () => {
             setPostHeader(false)
             setInfoHeader(false)
             setLodgeBankHeader(false)
-        }else if(location.pathname.split('/').splice(-1)[0] === 'earnings'){
+        }else if(location.pathname.split('/').splice(-1)[0] === 'cart'){
             setProfileHeader(false)
             setLodgeHeader(false)
             setHomeHeader(false)
@@ -183,6 +184,21 @@ const AgentHeader = () => {
             setPostHeader(true)
             setInfoHeader(false)
             setLodgeBankHeader(false)
+        }else if(location.pathname.split('/').splice(-1)[0] === 'lodge-bank'){
+            setProfileHeader(false)
+            setLodgeHeader(false)
+            setHomeHeader(false)
+
+            setCartHeader(false)
+            setSpaceHeader(false)
+            setInboxHeader(false)
+            setNoticeHeader(false)
+
+            setSupportHeader(false)
+            setSettingsHeader(false)
+            setPostHeader(false)
+            setInfoHeader(false)
+            setLodgeBankHeader(true)
         }else if(location.pathname.split('/').splice(-1)[0] === 'settings'){
             setProfileHeader(false)
             setLodgeHeader(false)
@@ -201,17 +217,9 @@ const AgentHeader = () => {
         }
     }, [location]) 
 
-    useEffect(() => {
+    
 
-        AUTHENTICATE_USER(window.localStorage.getItem('agentToken'))
-        .then((result) => console.log(result))
-        .catch(err => console.log(err))
 
-        CHECK_USER(window.localStorage.getItem('agentToken'))
-        .then((result) => window.localStorage.setItem('agentId', result.user.agentid))
-        .catch(err => console.log(err))
-
-    }, [location])
 
     return ( 
         <>
@@ -219,10 +227,21 @@ const AgentHeader = () => {
                 filterDisplay
                 &&
                 (
-                    <div className="agent-lodge-filter-overlay">
-                        <div className="agent-lodge-filter">
+                    <div className="client-lodge-filter-overlay">
+                        <div className="client-lodge-filter">
 
-                            <div className="agent-price-range" style={{height: '270px'}}>
+                            <div>
+                                <span style={{float: 'left'}}>
+                                    <h4>Filters</h4>
+                                </span> 
+
+                                <span onClick={e => filterDisplay ? setFilterDisplay(false) : setFilterDisplay(true)} style={{float: 'right', fontWeight: 'bold', background: 'red', borderRadius: '5px', color: '#fff', padding: '5px'}}>Close</span>
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div className="client-price-range" style={{height: '270px'}}>
 
                             
                                 <h6>Price range</h6>
@@ -261,7 +280,7 @@ const AgentHeader = () => {
 
                             <hr />
 
-                            <div className="agent-amenities" style={{padding: '10px'}}>
+                            <div className="client-amenities" style={{padding: '10px'}}>
                                 <h6>Lodge Amenities</h6>
                                 <div className="input-cnt">
                                     <input type="checkbox" name="" id="Balcony" />
@@ -281,7 +300,7 @@ const AgentHeader = () => {
                             <hr />
 
 
-                            <div className="agent-amenities" style={{padding: '10px'}}>
+                            <div className="client-amenities" style={{padding: '10px'}}>
                                 <h6>Lodge Flat</h6>
                                 <div className="input-cnt">
                                     <input name='flat' type="radio" id="Ground floor" />
@@ -301,7 +320,7 @@ const AgentHeader = () => {
                                 </div>
                             </div>
 
-                            <button style={{width: '100%', height: '55px', outline: 'none', border: 'none'}}>
+                            <button style={{width: '100%', color: '#fff', fontWeight: 'bold', background: 'linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% )', height: '55px', outline: 'none', border: 'none'}}>
                                 Filter
                             </button>
 
@@ -310,7 +329,7 @@ const AgentHeader = () => {
                 )
             }
 
-            <div className="agent-header">
+            <div className="client-header">
 
                 {
                     HomeHeader
@@ -319,15 +338,18 @@ const AgentHeader = () => {
                     (
                         <ul>
 
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
-                                <h4>Lodge Request</h4> 
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
+                                <h4>Lodge Feeds</h4> 
                             </li>
-
-                            
-                            <li onClick={e => nav('/agent/notice')}>
-                                <img src={nnoticeSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                           
+                            <li onClick={e => {
+                                filterDisplay ? setFilterDisplay(false) : setFilterDisplay(true)
+                            }}>
+                                <img src={filterSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
                             </li>
-                          
+                            <li onClick={e => nav('/client/notice')}>
+                                <img src={bellSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
                         </ul>
                     )
                 }
@@ -337,15 +359,13 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li onClick={e => nav('/agent/user')}>
-                                <img src={myImg} style={{height: '50px', width: '50px', borderRadius: '50%', position: 'absolute', left: '20px', top: '10px'}} alt="" />
+                            <li onClick={e => nav('/client/user')}>
+                                <img src={myImg} style={{height: '30px', width: '30px', borderRadius: '50%', position: 'absolute', left: '20px', top: '10px'}} alt="" />
 
-                                <span style={{fontSize: 'x-small', background: 'green', padding: '2.5px 5px 2.5px 2.5px', borderRadius: '5px', color: '#fff', position: 'absolute', left: '72px', top: '35px' }}>UserId: 667gh-76100-990ph</span> 
+                                <span style={{fontSize: 'x-small', background: 'green', padding: '2.5px 5px 2.5px 2.5px', borderRadius: '5px', color: '#fff', position: 'absolute', left: '52px', top: '20px' }}>UserId: 667gh-76100-990ph</span> 
                             </li> 
 
-                            <li onClick={e => nav('/agent/')}>
-                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
-                            </li> 
+                            
                             
                         </ul>
                     )
@@ -357,11 +377,11 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
-                                <h5>Lodge Request Details</h5> 
-                            </li>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
+                                <h4>Lodge Details</h4>
+                            </li> 
 
-                            <li onClick={e => nav('/agent/')}>
+                            <li onClick={e => nav('/client/')}>
                                 <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
                             </li> 
                             
@@ -370,12 +390,12 @@ const AgentHeader = () => {
                 }
 
 
-{
+                {
                     CartHeader
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>Cart</h4> 
                             </li>
 
@@ -390,7 +410,7 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>Space</h4> 
                             </li>
 
@@ -405,7 +425,7 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>Inbox</h4> 
                             </li>
 
@@ -420,11 +440,11 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>Notice</h4> 
                             </li>
 
-                            <li onClick={e => nav('/agent/')}>
+                            <li onClick={e => nav('/client/')}>
                                 <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
                             </li> 
                             
@@ -438,7 +458,7 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>Personla Data</h4> 
                             </li>
 
@@ -455,7 +475,7 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>My Post</h4> 
                             </li>
 
@@ -467,13 +487,29 @@ const AgentHeader = () => {
                     )
                 }
 
-               
+                {       
+                    LodgeBankHeader
+                    &&
+                    (
+                        <ul>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
+                                <h4>Saved Lodges</h4> 
+                            </li>
+
+                            <li onClick={e => nav(-1)}>
+                                <img src={backSvg} style={{height: '20px', width: '20px', borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}} alt="" />
+                            </li> 
+                            
+                        </ul>
+                    )
+                }
+
                 {
                     SettingsHeader
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>Profile Settings</h4> 
                             </li>
 
@@ -490,7 +526,7 @@ const AgentHeader = () => {
                     &&
                     (
                         <ul>
-                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '25px', color: '#fff'}}>
+                            <li style={{position: 'absolute', whiteSpace: 'nowrap', left: '10px', top: '15px', color: '#fff'}}>
                                 <h4>Support</h4> 
                             </li>
 
@@ -504,10 +540,9 @@ const AgentHeader = () => {
 
                 
 
-
             </div>
         </>
      );
 }
  
-export default AgentHeader;
+export default Header;

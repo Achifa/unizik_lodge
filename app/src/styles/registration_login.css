@@ -1,0 +1,332 @@
+.loader {
+    width: 8px;
+    height: 30px;
+    border-radius: 4px;
+    display: block;
+    margin: 20px auto;
+    position: relative;
+    background: currentColor;
+    color: #FFF;
+    box-sizing: border-box;
+    animation: animloader 0.3s 0.3s linear infinite alternate;
+  }
+
+  .err-mssg{
+    color: red;
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .loader::after, .loader::before {
+    content: '';
+    width: 8px;
+    height: 30px;
+    border-radius: 4px;
+    background: currentColor;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    box-sizing: border-box;
+    animation: animloader 0.3s  0.45s  linear infinite alternate;
+  }
+  .loader::before {
+    left: -20px;
+    animation-delay: 0s;
+  }
+  
+  @keyframes animloader {
+    0%   { height: 30px} 
+    100% { height: 4px}
+  }
+
+  .signup-overlay{
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    color: #fff;
+    background-color: transparent;
+
+  }
+
+  #signup-overlay{
+    display: flex;
+  }
+
+
+
+
+
+/**/
+
+
+@media screen and (max-width: 480px) {
+
+  
+
+    #inactive-elem{
+        display: none;
+    }
+
+    .form-step-illustrator{
+        height: 100px;
+        width: 100%;
+        padding: none;
+    }
+
+    .form-step-illustrator ul{
+        list-style-type: none;
+        width: 70%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .form-step-illustrator ul li{
+        height: 50px;
+        padding: 15px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 10px;
+        border: 1px solid #000;
+    }
+
+    .form-step-illustrator ul li::after{
+        border: 1px solid #000;
+        content: ' ';
+        position: absolute;
+        right: -20px;
+        width: 20px;
+    }
+
+    .profile-basic-info{
+        height: 150px;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .profile-basic-info-data ul{
+        list-style-type: none;
+    }
+
+    .profile-basic-info-data ul li{
+        height: 30%;
+        width: 100%;
+        background-color: #f8f8f8;
+        margin: 5px 0 5px 0;
+        font-size: medium;
+        padding: 5px;
+        font-weight: 500;
+    }
+    .form-step-illustrator ul li:last-child:after{
+        display: none;
+    }
+
+    .form-detail{
+        height: 50px;
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .form-name{
+        height: 60px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .form-input-cnt{
+        height: fit-content;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .form-input-cnt:nth-child(even){
+        float: right;
+    }
+
+    .form-input-cnt:nth-child(odd){
+        float: left;
+    }
+
+    .form-one,.form-two,.form-three,.form-four,.form-five{
+        display: block;
+        height: fit-content;
+        
+        padding: 0;
+    }
+
+    .form-input-cnt input[type='text']{
+        height: 50px;
+        width: 100%;
+        padding: 10px;
+        margin: .5px 0 .5px 0;
+    }
+
+    .form-input-cnt input[type='password']{
+        height: 50px;
+        width: 100%;
+        padding: 10px;
+        margin: .5px 0 .5px 0;
+    }
+
+    .file-frame{
+        height: 150px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        border: 1px dashed #000;
+    }
+
+    .btn-cnt{
+        height: 80px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding: 10px;
+        left: 0;
+        margin: 10px 0 10px 0;
+    }
+
+    .frame-close{
+        height: 25px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: red;
+        color: #fff;
+        font-weight: bold;
+        display: none;
+    }
+
+    .signup-form{
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+    }
+
+    
+    .signin-form{
+        height: fit-content;
+        width: 100%;
+        text-align: center;
+        overflow: auto;
+        padding: 20px 20px 20px 20px;
+    }
+
+
+    .btn-cnt button{
+        height: 60px;
+        width: 100%;
+        background: linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% );
+        color: #fff;
+        font-weight: 500;
+        display: flex;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        margin: 10px 0 10px 0;
+    }
+
+    .home{
+        height: calc(100vh - 150px);
+        width: 100%;
+        overflow: auto;
+        padding: 0 0 70px 0;
+        margin: 0;
+        
+    }
+
+    .card{
+        height: 350px;
+        width: 100%;
+        border-radius: 5px;
+        margin: 0;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .lodge-details{
+        height: 40%;
+        width: 100%;
+    }
+
+    .lodge-data1, .lodge-data2, .lodge-data3{
+        height: 33.3%;
+        padding: 10px 10px 10px 10px;
+        width: 100%;
+    }
+
+    .lodge-name{
+        float: left;
+        width: 50%;
+        font-weight: 500;
+    }
+
+    .lodge-price{
+        width: 50%;
+        float: right;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .lodge-location{
+        float: left;
+        padding: 0;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+
+    .lodge-save{
+        float: right;
+        height: 100%;
+        width: 30%;
+        text-align: right;
+        color: #fff;
+        border: none;
+        padding-right: 5px;
+        color: #000;
+        font-size: medium;
+        outline: none;
+    }
+
+   
+
+    .form-field{
+        height: calc(100vh - 180px);
+        width: 100%;
+        padding: 10px;
+        overflow: auto;
+    }
+}

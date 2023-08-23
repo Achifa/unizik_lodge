@@ -111,5 +111,20 @@ CREATE TABLE IF NOT EXISTS Photos
 );
 
 
+CREATE TABLE IF NOT EXISTS "Client"
+(
+    id serial primary KEY NOT NULL,
+    clientId text UNIQUE NOT NULL,
+    clientName text NOT NULL,
+    fname text NOT NULL,
+    lname text NOT NULL,
+    email text NOT NULL,
+    phone bigint NOT NULL,
+    pwd text NOT NULL,
+    date text NOT NULL,
+    gender text NOT NULL,
+    sname text NOT NULL,
+    is_active boolean NOT NULL
+);
 
 */

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SIGNIN, UPLOAD_AGENT_SIGNIN_FORM } from "../../axios/agent";
+import { SIGNIN, UPLOAD_AGENT_SIGNIN_FORM } from "../axios/agent";
 
 const Login = () => {
 
@@ -69,35 +69,33 @@ const Login = () => {
     return ( 
         <>
             
-            <div className="agent-signin">
+            <div className="signin" style={{overflow: 'auto', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', height: '100vh'}}>
 
-                
+                <form className="signin-form">
 
-                <div className="agent-form-name">
-                    <h4>
-                        Agent Signup Form
-                    </h4>
-                </div>
+                   
 
-                <form className="agent-signin-form">
-
-                    <div data-form='one' className="agent-form-one">
-
-                        <div className="agent-input-cnt">
-                            <input onInput={e => setemail(e.target.value)} type="text" placeholder="Email"/>     
-                        </div>
-                                   
-                        <div className="agent-input-cnt">
-                            <input onInput={e => setpwd(e.target.value)} type="text" placeholder="Password"/>
-                        </div>
-
-                        
+                    <div style={{width: '100%'}} className="form-input-cnt">
+                        <input onInput={e => setemail(e.target.value)} type="text" placeholder="Email"/>     
                     </div>
+                                
+                    <div style={{width: '100%', marginBottom: '20px'}} className="form-input-cnt">
+                        <input onInput={e => setpwd(e.target.value)} type="text" placeholder="Password"/>
+                    </div>
+
+                    
+                    <small>
+                        <p>Don't have an account? <span style={{color: 'blue'}}>Signup here.</span></p>
+                    </small>
+
+                    <small>
+                        <p>Forgot Password?</p>
+                    </small>
 
                     <div className="err-mssg">{err}</div>
                    
 
-                    <div className="agent-btn-cnt">
+                    <div className="btn-cnt">
                         <button onClick={handleBtns}  style={{float: 'right'}}>{log}</button>
                     </div>
 

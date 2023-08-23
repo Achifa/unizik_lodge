@@ -174,7 +174,7 @@ let lodge = (req,res) => {
                 "Lodge"
                 ("id","lodgeid","name","price","address1","address2","coordinates","facilities","date","agentid")
                 values
-                (Default,'${uid}','${name}','${price}','${address1}','${address2}','${coord}','{"facilities": "${selectedfacilities}"}','${date}','${agentId}')
+                (Default,'${uid}','${name}','${price}','${null}','${null}','${coord}','{"facilities": "${selectedfacilities}"}','${date}','${agentId}')
             `)
             .then((result) => {
                 if(result.rowCount === 1){

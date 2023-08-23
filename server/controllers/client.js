@@ -95,11 +95,11 @@ let signup = async(req, res) => {
             pool.query(`
                 insert
                 into
-                "Agent"
-                (id,agentId,agentName,fname,lname,email,phone,pwd,date,gender,sname,is_active,address1,address2)
+                "Client"
+                (id,clientId,clientName,fname,lname,email,phone,pwd,date,gender,sname,is_active)
 
                 values
-                (DEFAULT,'${uid}','${uname}','${fname}','${lname}','${email}','${phone}','${h_pwd}','${date}','${gender}','${sname}','${false}','${address1}','${address2}')
+                (DEFAULT,'${uid}','${uname}','${fname}','${lname}','${email}','${phone}','${h_pwd}','${date}','${gender}','${sname}','${false}')
             `)
             .then((result) => {
                 if(result.rowCount === 1){

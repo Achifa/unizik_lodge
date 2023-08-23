@@ -87,7 +87,7 @@
     }
 
     .agent-header{
-        height: 70px;
+        height: 60px;
         width: 100%;
         background: linear-gradient(-45deg, rgb(0, 47, 128) 0%, rgb(0,128,0) 100% );
     }
@@ -245,10 +245,7 @@
         display: none;
     }
 
-    .agent-signup-form{
-        height: 100vh;
-        width: 100%;
-    }
+
 
     .agent-btn-cnt button{
         height: 60px;

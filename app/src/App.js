@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 import './App.css'
 import './styles/client.css'
 import './styles/agent.css'
+import './styles/registration_login.css'
 
 import AgentHome from "./pages/agent/Home";
 
 import Home from "./pages/client/Home";
-import Header from "./components/Header";
+import Header from "./components/client/Header";
 import Profile from "./pages/client/Profile";
 import Cart from "./pages/client/Cart";
 import Lodge from "./pages/client/Lodge";
@@ -17,14 +18,12 @@ import ProfileInfo from "./pages/client/Personal_Info";
 import Space from "./pages/client/Space";
 
 
-import AgentHeader from "./components/AgentHeader";
+import AgentHeader from "./components/agent/AgentHeader";
 import AgentProfile from "./pages/agent/Profile";
 import AgentProfileInfo from "./pages/agent/Personal_Info";
 import AgentNotice from "./pages/agent/Notice";
 import AgentSpace from "./pages/agent/Space";
 import AgentClientRequest from "./pages/agent/ClientRequest";
-import AgentSignup from "./pages/agent/Signup";
-import AgentSignin from "./pages/agent/Login";
 import AgentNavigation from "./pages/agent/Nav";
 import AgentInbox from "./pages/agent/Inbox";
 import AgentEarnings from "./pages/agent/Earnings";
@@ -40,6 +39,10 @@ import Support from "./pages/client/Support";
 import Settings from "./pages/client/Settings";
 import MyPost from "./pages/client/MyPost";
 import SavedLodge from "./pages/client/SavedLodge";
+import Chat from "./pages/client/Chat";
+
+import Signup from "./Registration_Login.js/Signup";
+import Login from "./Registration_Login.js/Login";
 
 
 
@@ -105,7 +108,31 @@ const App = () => {
                 set_active_nav(
                     ''
                 ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'chat'){
+                set_active_header(
+                    ''
+                )
+
+                set_active_nav(
+                    ''
+                ) 
             }else if(location.pathname.split('/').splice(-1)[0] === 'support'){
+                set_active_header(
+                    <Header />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'signup'){
+                set_active_header(
+                    <Header />
+                )
+
+                set_active_nav(
+                    ''
+                ) 
+            }else if(location.pathname.split('/').splice(-1)[0] === 'signin'){
                 set_active_header(
                     <Header />
                 )
@@ -264,7 +291,10 @@ const App = () => {
                 <Route path='/client/user/lodge-bank' element={<SavedLodge />}></Route>
                  
                 <Route path='/client/inbox' element={<Inbox />}></Route>
+                <Route path='/client/lodge/chat' element={<Chat />}></Route>
                 <Route path='/client/notice' element={<Notice />}></Route> 
+                <Route path='/client/signup' element={<Signup />}></Route>
+                <Route path='/client/signin' element={<Login />}></Route>
                 <Route path='/client/lodge' element={<Lodge />}></Route>
                 <Route path='/client/cart' element={<Cart />}></Route>
                 <Route path='/client/user/info' element={<ProfileInfo />}></Route>
@@ -289,8 +319,8 @@ const App = () => {
                 <Route path='/agent/notice' element={<AgentNotice />}></Route>
                 <Route path='/agent/space' element={<AgentSpace />}></Route>
                 <Route path='/agent/client/request' element={<AgentClientRequest />}></Route>
-                <Route path='/agent/signup' element={<AgentSignup />}></Route>
-                <Route path='/agent/signin' element={<AgentSignin />}></Route>
+                <Route path='/agent/signin' element={<Login />}></Route>
+                <Route path='/agent/signup' element={<Signup />}></Route>
                 <Route path='/agent/earnings' element={<AgentEarnings />}></Route>
                 
                 <Route path='/agent/inbox' element={<AgentInbox />}></Route>
